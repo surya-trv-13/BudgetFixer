@@ -1,0 +1,39 @@
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+.eslintcache
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# node-waf configuration
+.lock-wscript
+
+# App packaged
+dist
+
+.idea
+npm-debug.log.*
+__snapshots__
+
+# Package.json
+package-lock.json
+
+# dotenv
+.env
+
+# Custom Files
+src/setupTests.js
+src/serviceWorker.js
+src/App.test.js
+src/third-party/hark.js
+src/SIPml-api.js
+src/utils/networkUtils.js
