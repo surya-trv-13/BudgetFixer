@@ -8,9 +8,9 @@ const port = process.env.PORT;
 app.use(express.json());
 
 app.post("/", (req, res) => {
-    res.send("Connection Working" + req.body.user);
+	res.send("Connection Working : " + req.body.user);
 });
 
 app.listen(port, () => {
-    console.log(`App Started at ${port}`);
+	console.log(`App Started at ${port}`);
 });
