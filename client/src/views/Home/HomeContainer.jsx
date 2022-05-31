@@ -10,6 +10,7 @@ const styles = (theme) => ({
 		backgroundColor: theme.palette.background.default,
 		height: "100vh",
 		width: "100%",
+		boxSizing: "border-box",
 	},
 });
 

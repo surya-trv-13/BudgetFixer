@@ -7,7 +7,7 @@ const styles = (theme) => ({});
 
 const HomeHeader = () => (
 	<Box>
-		<Header />
+		<Header title="Budget Fixer" showLogo />
 	</Box>
 );
 

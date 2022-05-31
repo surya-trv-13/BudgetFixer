@@ -62,7 +62,7 @@ export default createTheme({
 		// used MWB
 		h2: {
 			fontSize: pxToRem(40),
-			color: "#5DAAE0",
+			color: "#BB86FC",
 			lineHeight: "2.05rem",
 		},
 		// used
