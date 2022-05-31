@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import { Box, Typography } from "@material-ui/core";
 
-const styles = (theme) => ({});
+const styles = (theme) => ({
+	root: {
+		height: theme.typography.pxToRem(20),
+		borderBottom: `${theme.typography.pxToRem(1)} solid ${theme.palette.primary}`,
+	},
+});
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,

@@ -9,7 +9,47 @@ export const pxToVh1974 = (px) => `${px * 0.10266940451}vh`;
 export const pxToVw = (px) => `${px * 0.05208}vw`;
 
 export default createTheme({
-	palette: {},
+	palette: {
+		primary: {
+			main: "#BB86FC",
+			light: "rgb(55,13,179,0.5)",
+			dark: "rgb(55,13,179,0.2)",
+		},
+		secondary: {
+			main: "#03DAC6",
+		},
+		error: {
+			main: "#CF6679",
+		},
+		common: {
+			white: "#FFFFFF",
+			black: "rgb(0,0,0)",
+		},
+		text: {
+			primary: "#000000",
+			secondary: "#000000",
+		},
+		background: {
+			default: "#1C1C1C",
+		},
+		divider: "rgb(255,255,255,0.5)",
+		grey: {
+			50: "rgb(255,255,255,0.5)",
+			100: "rgb(255,255,255,0.65)",
+			200: "rgb(255,255,255,0.85)",
+			300: "rgb(255,255,255)",
+			400: "rgb(0,0,0,0.5)",
+			500: "rgb(0,0,0,0.65)",
+			600: "rgb(0,0,0,0.85)",
+		},
+		cardBackground: {
+			main: "rgb(28,28,28,0.5)",
+			color: "#FFFFFF",
+		},
+		solidBackground: {
+			main: "#1E1E1E",
+		},
+	},
 	spacing: 8,
 	typography: {
 		pxToRem: (px) => pxToRem(px),
@@ -72,7 +112,6 @@ export default createTheme({
 			color: "inherit",
 			textTransform: "none",
 		},
-
 		fontFamily: "Roboto",
 	},
 	overrides: {},
