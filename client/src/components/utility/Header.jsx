@@ -10,6 +10,8 @@ const styles = (theme) => ({
 		fontSize: theme.typography.pxToRem(30),
 		borderBottom: `${theme.typography.pxToRem(1)} solid ${theme.palette.common.white}`,
 		padding: `0 ${theme.typography.pxToRem(10)}`,
+		display: "flex",
+		justifyContent: "space-between",
 	},
 	logo: {
 		height: theme.typography.pxToRem(30),
@@ -20,6 +22,13 @@ const styles = (theme) => ({
 	},
 	titleString: {
 		padding: `${theme.typography.pxToRem(2)} 0`,
+	},
+	pageTag: {},
+	labelTag: {
+		color: "#FFFFFF",
+		backgroundColor: theme.palette.secondary.main,
+		borderRadius: `0 0 ${theme.typography.pxToRem(3)} ${theme.typography.pxToRem(3)}`,
+		padding: "0 1vw 0 1vw",
 	},
 });
 
@@ -42,6 +51,10 @@ const Header = ({ classes, title, showLogo }) => (
 				{title}
 			</Typography>
 		</Box>
+		<Box className={classes.pageTag}>
+			<span className={classes.labelTag}>Dashboard</span>
+		</Box>
+		<Box></Box>
 	</Box>
 );
 
