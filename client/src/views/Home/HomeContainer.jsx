@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import HomeHeader from "./HomeHeader";
+import HomeFooter from "./HomeFooter";
 
 const styles = (theme) => ({
 	root: {
@@ -23,6 +24,7 @@ const defaultProps = {};
 const HomeContainer = ({ classes }) => (
 	<Box className={classes.root}>
 		<HomeHeader />
+		<HomeFooter />
 	</Box>
 );
 
