@@ -1,11 +1,6 @@
 import React from "react";
-import { Box } from "@material-ui/core";
 import Footer from "../../components/utility/Footer";
 
-const HomeFooter = () => (
-	<Box>
-		<Footer text="" />
-	</Box>
-);
+const HomeFooter = () => <Footer text="" />;
 
 export default HomeFooter;

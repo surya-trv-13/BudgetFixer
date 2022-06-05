@@ -11,6 +11,7 @@ const styles = () => ({
 		width: "98.3%",
 		boxSizing: "border-box",
 		bottom: 0,
+		height: "3.85vh",
 	},
 	rowStyles: {
 		display: "flex",
@@ -37,7 +38,7 @@ const Footer = ({ classes, text }) => (
 		<RowFlex rootClass={classes.rowStyles}>
 			<Typography className={classes.footerText}>{text}</Typography>
 			<Box>
-				<Typography className={classes.footerText}>{COPYRGHT_TXT_FOOTER}</Typography>
+				<Typography variant="subtitle2">{COPYRGHT_TXT_FOOTER}</Typography>
 			</Box>
 		</RowFlex>
 	</Box>
