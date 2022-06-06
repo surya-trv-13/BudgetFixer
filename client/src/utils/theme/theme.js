@@ -114,5 +114,24 @@ export default createTheme({
 		},
 		fontFamily: "Roboto",
 	},
-	overrides: {},
+	overrides: {
+		MuiGrid: {
+			"spacing-xs-2": {
+				width: `calc(100% - ${pxToRem(16)})`,
+				margin: pxToRem(8),
+			},
+			"spacing-xs-4": {
+				width: `calc(100% - ${pxToRem(32)})`,
+				margin: pxToRem(8),
+				"& > .MuiGrid-item": {
+					padding: pxToRem(8),
+				},
+			},
+		},
+		MuiPaper: {
+			rounded: {
+				borderRadius: pxToRem(4),
+			},
+		},
+	},
 });
