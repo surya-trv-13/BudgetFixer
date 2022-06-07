@@ -14,6 +14,228 @@
 					"content": [
 						{
 							"width": "100%",
+							"height": "32%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "25%",
+									"component": "monthly-salary"
+								},
+								{
+									"height": "100%",
+									"width": "25%",
+									"component": "remaining-balance"
+								},
+								{
+									"height": "100%",
+									"width": "25%",
+									"component": "filter-box"
+								},
+								{
+									"height": "100%",
+									"width": "25%",
+									"component": "filter-box"
+								}
+							]
+						},
+						{
+							"width": "100%",
+							"height": "68%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "30%",
+									"alignment": "vertical",
+									"content": [
+										{
+											"height": "50%",
+											"width": "100%",
+											"component": "filter-box"
+										},
+										{
+											"height": "50%",
+											"width": "100%",
+											"component": "filter-box"
+										}
+									]
+								},
+								{
+									"height": "100%",
+									"width": "70%",
+									"component": "monthly-salary"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"sm": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "16",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"alignment": "vertical",
+					"content": [
+						{
+							"width": "100%",
+							"height": "52%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "100%",
+									"component": "monthly-salary"
+								}
+							]
+						},
+						{
+							"width": "100%",
+							"height": "48%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "monthly-salary"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "remaining-balance"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "filter-box"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"md": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "16",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"alignment": "vertical",
+					"content": [
+						{
+							"width": "100%",
+							"height": "52%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "100%",
+									"component": "monthly-salary"
+								}
+							]
+						},
+						{
+							"width": "100%",
+							"height": "48%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "monthly-salary"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "remaining-balance"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "filter-box"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"lg": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "16",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"alignment": "vertical",
+					"content": [
+						{
+							"width": "100%",
+							"height": "52%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "100%",
+									"component": "monthly-salary"
+								}
+							]
+						},
+						{
+							"width": "100%",
+							"height": "48%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "monthly-salary"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "remaining-balance"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "filter-box"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"xl": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "16",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"alignment": "vertical",
+					"content": [
+						{
+							"width": "100%",
 							"height": "52%",
 							"alignment": "horizontal",
 							"content": [
