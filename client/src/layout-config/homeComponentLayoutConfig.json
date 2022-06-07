@@ -1,0 +1,54 @@
+{
+	"0": {
+		"xs": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "16",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"alignment": "vertical",
+					"content": [
+						{
+							"width": "100%",
+							"height": "52%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "100%",
+									"component": "monthly-salary"
+								}
+							]
+						},
+						{
+							"width": "100%",
+							"height": "48%",
+							"alignment": "horizontal",
+							"content": [
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "monthly-salary"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "remaining-balance"
+								},
+								{
+									"height": "100%",
+									"width": "33.33%",
+									"component": "filter-box"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+}

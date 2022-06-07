@@ -2,7 +2,8 @@ import React from "react";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import { Grid, Paper } from "@material-ui/core";
-import SummaryDetails from "../../components/HomeComponent/SummaryDetails";
+import LayoutWrapper from "../../components/Wrappers/LayoutWrapper";
+import homeComponentGetter from "../../utils/component-getters/homeComponentGetter";
 
 const styles = (theme) => ({
 	box: {
@@ -26,38 +27,12 @@ const styles = (theme) => ({
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
+	layoutConfig: PropTypes.object.isRequired,
 };
 
-const HomeComponent = ({ classes }) => (
+const HomeComponent = ({ classes, layoutConfig }) => (
 	<Grid container className={classes.box}>
-		<Grid xs={12} container direction="row" spacing={4}>
-			{/* TODO: Get the details of the 4 boxes */}
-			<Grid xs={3} item>
-				<Paper className={classes.paperStyle}></Paper>
-			</Grid>
-			<Grid xs={3} item>
-				<Paper className={classes.paperStyle}></Paper>
-			</Grid>
-			<Grid xs={3} item>
-				<Paper className={classes.paperStyle}></Paper>
-			</Grid>
-			<Grid xs={3} item>
-				<Paper className={classes.paperStyle}></Paper>
-			</Grid>
-		</Grid>
-		<Grid xs={4} container spacing={4}>
-			<Grid xs={12} item justifyContent="center">
-				<Paper className={classes.paperStyle}></Paper>
-			</Grid>
-			<Grid xs={12} item justifyContent="center">
-				<Paper className={classes.paperStyle}></Paper>
-			</Grid>
-		</Grid>
-		<Grid xs={8} container spacing={4}>
-			<Grid xs={12} item>
-				<Paper className={classes.paperStyle}></Paper>
-			</Grid>
-		</Grid>
+		<LayoutWrapper layoutConfig={layoutConfig} componentGetter={homeComponentGetter} />
 	</Grid>
 );
 

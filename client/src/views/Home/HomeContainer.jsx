@@ -6,6 +6,7 @@ import { Box } from "@material-ui/core";
 import HomeHeader from "./HomeHeader";
 import HomeFooter from "./HomeFooter";
 import HomeComponent from "./HomeComponent";
+import layoutConfig from "../../layout-config/homeComponentLayoutConfig.json";
 
 const styles = (theme) => ({
 	root: {
@@ -22,13 +23,16 @@ const propTypes = {
 
 const defaultProps = {};
 
-const HomeContainer = ({ classes }) => (
-	<Box className={classes.root}>
-		<HomeHeader />
-		<HomeComponent />
-		<HomeFooter />
-	</Box>
-);
+const HomeContainer = ({ classes }) => {
+	const layoutConfigHomeComponent = layoutConfig[0];
+	return (
+		<Box className={classes.root}>
+			<HomeHeader />
+			<HomeComponent layoutConfig={layoutConfigHomeComponent} />
+			<HomeFooter />
+		</Box>
+	);
+};
 
 HomeContainer.propTypes = propTypes;
 HomeContainer.defaultProps = defaultProps;
