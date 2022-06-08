@@ -30,7 +30,7 @@ export default createTheme({
 			secondary: "#000000",
 		},
 		background: {
-			default: "#1C1C1C",
+			default: "#121212",
 		},
 		divider: "rgb(255,255,255,0.5)",
 		grey: {

@@ -1,7 +1,26 @@
 import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { Box } from "@material-ui/core";
 
-const SummaryDetails = () => (
-	<div style={{ width: "100%", height: "100%", background: "#ffffff" }}>SummaryDetails</div>
+const styles = (theme) => ({
+	root: {
+		width: "100%",
+		height: "100%",
+		background: theme.palette.solidBackground.main,
+	},
+});
+
+const propTypes = {
+	classes: PropTypes.object.isRequired,
+};
+
+const SummaryDetails = ({ classes }) => (
+	<Box className={classes.root} style={{}}>
+		SummaryDetails
+	</Box>
 );
 
-export default SummaryDetails;
+SummaryDetails.propTypes = propTypes;
+
+export default withStyles(styles, { withTheme: true })(SummaryDetails);
