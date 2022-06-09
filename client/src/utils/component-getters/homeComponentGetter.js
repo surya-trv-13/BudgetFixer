@@ -2,6 +2,7 @@ import React from "react";
 import InvalidComponentIdException from "../../Exceptions/InvalidComponentIdException";
 import { HOME_DASHBOARD_COMPONENT } from "../componentIDs";
 import SummaryDetails from "../../components/HomeComponent/SummaryDetails";
+import GridDetails from "../../components/HomeComponent/GridDetails";
 
 const getAccountBalance = () => <SummaryDetails />;
 
@@ -11,7 +12,7 @@ const getPaymentHistory = () => <SummaryDetails />;
 
 const getRecentActivities = () => <SummaryDetails />;
 
-const getRightSection = () => <SummaryDetails />;
+const getRightSection = () => <GridDetails />;
 
 const getComponent = (componentId = "") => {
 	switch (componentId) {
