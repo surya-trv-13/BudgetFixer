@@ -15,11 +15,7 @@ const propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-const SummaryDetails = ({ classes }) => (
-	<Box className={classes.root} style={{}}>
-		SummaryDetails
-	</Box>
-);
+const SummaryDetails = ({ classes }) => <Box className={classes.root}></Box>;
 
 SummaryDetails.propTypes = propTypes;
 

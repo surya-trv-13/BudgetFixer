@@ -14,6 +14,7 @@ const styles = (theme) => ({
 		},
 		boxSizing: "border-box",
 		width: "100%",
+		padding: theme.typography.pxToRem(8),
 	},
 	paperStyle: {
 		height: "18vh",
