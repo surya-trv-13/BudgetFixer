@@ -66,10 +66,11 @@ function renderElement(data, getComponent, classes, spacing, outerMargin) {
 				margin: getRootMargin(data.root, outerMargin, spacing),
 			}}
 		>
-			{data.content.map((cardData) =>
+			{data.content.map((cardData, index) =>
 				!cardData.content ? (
 					<div
 						className={classes.rowInColumn}
+						key={`${index.toString().concat(cardData.height) + Math.random()}`}
 						style={{
 							boxSizing: "border-box",
 							height: cardData.height,

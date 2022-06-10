@@ -15,7 +15,7 @@ const styles = () => ({
 
 const propTypes = {
 	classes: PropTypes.object,
-	rootClass: PropTypes.object,
+	rootClass: PropTypes.string,
 	children: PropTypes.node.isRequired,
 };
 

@@ -13,6 +13,9 @@ const styles = (theme) => ({
 		height: "10%",
 		paddingLeft: theme.typography.pxToRem(12),
 	},
+	headerText: {
+		color: "#FFFFFFA6",
+	},
 	bodyBox: {
 		height: "50%",
 		display: "flex",
@@ -20,7 +23,7 @@ const styles = (theme) => ({
 		alignItems: "flex-end",
 	},
 	bodyData: {
-		color: "#FFFFFF",
+		color: theme.palette.common.white,
 		fontSize: theme.typography.pxToRem(72),
 		fontWeight: "100",
 	},
@@ -33,7 +36,7 @@ const styles = (theme) => ({
 	subtitleData: {
 		color: "#FFFFFFA6",
 		fontSize: theme.typography.pxToRem(24),
-		fontWeight: "900",
+		fontWeight: "lighter",
 	},
 });
 
@@ -43,9 +46,13 @@ const propTypes = {
 
 const SummaryDetails = ({ classes }) => (
 	<Box className={classes.root}>
-		<Box className={classes.header}>Header</Box>
+		<Box className={classes.header}>
+			<Typography className={classes.headerText}>Monthly Salary</Typography>
+		</Box>
 		<Box className={classes.bodyBox}>
-			<Typography className={classes.bodyData}>&#8377; 54250</Typography>
+			<Typography variant="h1" className={classes.bodyData}>
+				&#8377; 54250
+			</Typography>
 		</Box>
 		<Box className={classes.subtitleBox}>
 			<Typography className={classes.subtitleData}>09-June-2022</Typography>
