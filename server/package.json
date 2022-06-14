@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "env-cmd -f ./config/config.env nodemon api/server.js",
-    "start": "",
+    "start": "env-cmd -f ./config/config.env node api/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "suryanarayan.rath",

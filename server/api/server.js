@@ -1,14 +1,27 @@
 const express = require("express");
 require("./database/mongoose");
-const { Product } = require("./models/product");
+
+const { Transaction } = require("./models/transactionModel");
 
 const app = express();
 const port = process.env.PORT;
 
 app.use(express.json());
 
-app.post("/", (req, res) => {
+app.get("/health", (req, res) => {
 	res.send("Connection Working : " + req.body.user);
+});
+
+app.post("/transaction", async (req, res) => {
+	const transaction = new Transaction(req.body);
+	await transaction
+		.save()
+		.then((data) => {
+			res.send(data);
+		})
+		.catch((e) => {
+			res.status(400).send(e);
+		});
 });
 
 app.listen(port, () => {
