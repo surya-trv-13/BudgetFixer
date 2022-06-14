@@ -1,7 +1,7 @@
 const express = require("express");
 require("./database/mongoose");
 
-const { Transaction } = require("./models/transactionModel");
+const { Transaction } = require("./models/transactions");
 
 const app = express();
 const port = process.env.PORT;
