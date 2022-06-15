@@ -13,9 +13,10 @@ const userSchema = new Schema({
 		type: String,
 		required: true.value,
 		trim: true,
-		validate: {
-			validator: validator.isEmail,
-			message: "Email is Invalid",
+		validate(value) {
+			if (!validator.isEmail(value)) {
+				throw new Error("Email is Invalid");
+			}
 		},
 	},
 	password: {
@@ -25,9 +26,10 @@ const userSchema = new Schema({
 	phoneNumber: {
 		type: Number,
 		required: false,
-		validate: {
-			validator: validator.isPhone,
-			message: "Mobile Number is invalid",
+		validate(value) {
+			if (!validator.isPhone(value)) {
+				throw new Error("Phone Number is Invalid");
+			}
 		},
 	},
 });
