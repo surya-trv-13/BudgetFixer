@@ -73,6 +73,19 @@ app.patch("/transaction/:id", async (req, res) => {
 	}
 });
 
+app.delete("/transaction/:id", async(req, res) => {
+	try {
+		const transaction = await Transaction.findByIdAndDelete(req.params.id);
+		if(!transaction){
+			res.status(404).send({error: "Transaction not found for deletion"});
+		}
+
+		res.status(200).send(transaction);
+	} catch (error) {
+		res.status(500).send(error)
+	}
+})
+
 app.listen(port, () => {
 	console.log(`App Started at ${port}`);
 });
