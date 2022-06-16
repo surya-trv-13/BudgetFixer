@@ -48,11 +48,9 @@ router.patch("/transaction/:id", async (req, res) => {
 	}
 
 	try {
-		const _id = req.params.id;
-		const transaction = await Transaction.findByIdAndUpdate(_id, req.body, {
-			new: true,
-			runValidators: true,
-		});
+		const transaction = await Transaction.findById(req.params.id);
+		updates.forEach((update) => (transaction[update] = req.body[update]));
+		await transaction.save();
 
 		if (!transaction) {
 			res.status(404).send({ error: "Transaction not found for updation." });

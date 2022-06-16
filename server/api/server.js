@@ -16,3 +16,15 @@ app.use(userRouter);
 app.listen(port, () => {
 	console.log(`App Started at ${port}`);
 });
+
+const bycrypt = require("bcryptjs");
+
+const myFunction = async () => {
+	const password = "Gupta@123!!";
+	const hashedPassword = await bycrypt.hash(password, 8);
+
+	console.log(password);
+	console.log(hashedPassword);
+};
+
+myFunction();

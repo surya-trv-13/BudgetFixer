@@ -11,6 +11,7 @@
   "author": "suryanarayan.rath",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "env-cmd": "^10.1.0",
     "express": "^4.17.2",
