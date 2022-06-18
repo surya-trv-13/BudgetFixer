@@ -3,23 +3,32 @@ const router = express.Router();
 
 const { User } = require("../models/user");
 
-router.get("/user/:id", async (req, res) => {
+router.post("/user", async (req, res) => {
 	try {
-		const user = await User.findById(req.params.id);
-		if (!user) {
-			res.status(404).send({ error: "User not found" });
-		}
+		const user = new User(req.body);
+		await user.save();
+
 		res.status(200).send(user);
 	} catch (error) {
 		res.status(500).send(error);
 	}
 });
 
-router.post("/user", async (req, res) => {
+router.post("/user/login", async (req, res) => {
 	try {
-		const user = new User(req.body);
-		await user.save();
+		const user = await User.findByCredentials(req.body.email, req.body.password);
+		res.status(200).send(user);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
 
+router.get("/user/:id", async (req, res) => {
+	try {
+		const user = await User.findById(req.params.id);
+		if (!user) {
+			res.status(404).send({ error: "User not found" });
+		}
 		res.status(200).send(user);
 	} catch (error) {
 		res.status(500).send(error);
