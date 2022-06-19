@@ -7,6 +7,12 @@ const userRouter = require("./routers/user");
 
 const port = process.env.PORT || 8080;
 const app = express();
+
+app.use((req, res, next) => {
+	console.log(req.method, req.path);
+	next();
+});
+
 app.use(express.json());
 
 app.use(healthRouter);
