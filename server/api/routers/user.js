@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const authenticate = require("../middlewares/authenticate");
 
 const { User } = require("../models/user");
 
@@ -25,7 +26,7 @@ router.post("/user/login", async (req, res) => {
 	}
 });
 
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", authenticate, async (req, res) => {
 	try {
 		const user = await User.findById(req.params.id);
 		if (!user) {
