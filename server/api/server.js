@@ -8,11 +8,6 @@ const userRouter = require("./routers/user");
 const port = process.env.PORT || 8080;
 const app = express();
 
-app.use((req, res, next) => {
-	console.log(req.method, req.path);
-	next();
-});
-
 app.use(express.json());
 
 app.use(healthRouter);
@@ -22,16 +17,3 @@ app.use(userRouter);
 app.listen(port, () => {
 	console.log(`App Started at ${port}`);
 });
-
-const jwt = require("jsonwebtoken");
-
-const myFunction = async () => {
-	const token = jwt.sign({ _id: "abc123" }, "thisissuryadoinfgrandowstuff");
-
-	console.log(token);
-
-	const data = jwt.verify(token, "thisissuryadoinfgrandowstuff");
-	console.log(data);
-};
-
-myFunction();
