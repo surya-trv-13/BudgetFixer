@@ -18,11 +18,33 @@ router.post("/user", async (req, res) => {
 router.post("/user/login", async (req, res) => {
 	try {
 		const user = await User.findByCredentials(req.body.email, req.body.password);
+		console.log(user);
 		const token = await user.generateAuthToken();
 
 		res.status(200).send({ user, token });
 	} catch (error) {
 		res.status(500).send(error);
+	}
+});
+
+router.post("/user/logout", authenticate, async (req, res) => {
+	try {
+		req.user.tokens = req.user.tokens.filter((token) => token.token !== req.token);
+		await req.user.save();
+		res.status(200).send({ message: "Logout Successfully!" });
+	} catch (error) {
+		res.status(500).send({ error });
+	}
+});
+
+router.post("/user/logoutAll", authenticate, async (req, res) => {
+	try {
+		req.user.tokens = [];
+		await req.user.save();
+
+		res.status(200).send({ message: "Logout from all devices!" });
+	} catch (error) {
+		res.status(500).send({ error });
 	}
 });
 
