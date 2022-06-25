@@ -18,7 +18,6 @@ router.post("/user", async (req, res) => {
 router.post("/user/login", async (req, res) => {
 	try {
 		const user = await User.findByCredentials(req.body.email, req.body.password);
-		console.log(user);
 		const token = await user.generateAuthToken();
 
 		res.status(200).send({ user, token });
@@ -52,10 +51,9 @@ router.get("/user/me", authenticate, async (req, res) => {
 	res.status(200).send(req.user);
 });
 
-router.patch("/user/:id", async (req, res) => {
+router.patch("/user/me", authenticate, async (req, res) => {
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ["name", "email", "password", "phoneNumber"];
-
 	const isValidUpdate = updates.every((update) => allowedUpdates.includes(update));
 
 	if (!isValidUpdate) {
@@ -63,13 +61,14 @@ router.patch("/user/:id", async (req, res) => {
 	}
 
 	try {
-		const user = await User.findById(req.params.id);
-		updates.forEach((update) => (user[update] = req.body[update]));
-		await user.save();
+		const user = await User.findById(req.user._id);
 
 		if (!user) {
 			res.status(404).send({ error: "user not found for updation" });
 		}
+
+		updates.forEach((update) => (user[update] = req.body[update]));
+		await user.save();
 
 		res.status(200).send(user);
 	} catch (error) {
@@ -77,14 +76,10 @@ router.patch("/user/:id", async (req, res) => {
 	}
 });
 
-router.delete("/user/:id", async (req, res) => {
+router.delete("/user/me", authenticate, async (req, res) => {
 	try {
-		const user = await User.findByIdAndDelete(req.params.id);
-		if (!user) {
-			res.status(404).send({ error: "User not found for deletion" });
-		}
-
-		res.status(200).send(user);
+		req.user.remove();
+		res.status(200).send(req.user);
 	} catch (error) {
 		res.status(500).send(error);
 	}
