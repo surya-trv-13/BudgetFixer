@@ -33,6 +33,11 @@ const tarnsactionSchema = new Schema({
 		trim: true,
 		default: "NA",
 	},
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+		ref: "User",
+	},
 });
 
 const Transaction = mongoose.model("Transaction", tarnsactionSchema);

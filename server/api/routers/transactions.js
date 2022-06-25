@@ -1,6 +1,7 @@
 const express = require("express");
 const { Transaction } = require("../models/transactions");
-
+const autheticate = require("../middlewares/authenticate");
+const authenticate = require("../middlewares/authenticate");
 const router = express.Router();
 
 router.get("/transaction", async (req, res) => {
@@ -26,8 +27,8 @@ router.get("/transaction", async (req, res) => {
 });
 
 // POST /transaction
-router.post("/transaction", async (req, res) => {
-	const transaction = new Transaction(req.body);
+router.post("/transaction", authenticate, async (req, res) => {
+	const transaction = new Transaction({ ...req.body, user: req.user._id });
 	try {
 		await transaction.save();
 		res.status(200).send(transaction);
