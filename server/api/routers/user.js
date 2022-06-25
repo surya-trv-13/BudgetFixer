@@ -61,16 +61,10 @@ router.patch("/user/me", authenticate, async (req, res) => {
 	}
 
 	try {
-		const user = await User.findById(req.user._id);
+		updates.forEach((update) => (req.user[update] = req.body[update]));
+		await req.user.save();
 
-		if (!user) {
-			res.status(404).send({ error: "user not found for updation" });
-		}
-
-		updates.forEach((update) => (user[update] = req.body[update]));
-		await user.save();
-
-		res.status(200).send(user);
+		res.status(200).send(req.user);
 	} catch (error) {
 		res.status(500).send(error);
 	}
