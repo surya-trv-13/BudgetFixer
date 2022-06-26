@@ -17,14 +17,3 @@ app.use(userRouter);
 app.listen(port, () => {
 	console.log(`App Started at ${port}`);
 });
-
-const { User } = require("./models/user");
-
-const main = async () => {
-	const user = await User.findById("62ab674cf0d339fa4398d711");
-	await user.populate("transactions");
-
-	console.log(user.transactions);
-};
-
-main();
