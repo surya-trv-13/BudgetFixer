@@ -4,7 +4,33 @@ const autheticate = require("../middlewares/authenticate");
 const authenticate = require("../middlewares/authenticate");
 const router = express.Router();
 
-router.get("/transaction", async (req, res) => {
+// POST /transaction
+router.post("/transaction", authenticate, async (req, res) => {
+	const transaction = new Transaction({ ...req.body, user: req.user._id });
+	try {
+		await transaction.save();
+		res.status(200).send(transaction);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
+
+router.get("/transaction/:id", authenticate, async (req, res) => {
+	const _id = req.params.id;
+	try {
+		const transaction = Transaction.findOne({ _id, user: req.user._id });
+
+		if (!transaction) {
+			res.status(404).send({ error: "Transaction not exists" });
+		}
+
+		res.send(transaction);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+router.get("/transaction", authenticate, async (req, res) => {
 	try {
 		const transaction = await Transaction.find({
 			$and: [
@@ -19,6 +45,7 @@ router.get("/transaction", async (req, res) => {
 					},
 				},
 			],
+			user: req.user._id,
 		});
 		res.status(200).send(transaction);
 	} catch (e) {
@@ -26,19 +53,8 @@ router.get("/transaction", async (req, res) => {
 	}
 });
 
-// POST /transaction
-router.post("/transaction", authenticate, async (req, res) => {
-	const transaction = new Transaction({ ...req.body, user: req.user._id });
-	try {
-		await transaction.save();
-		res.status(200).send(transaction);
-	} catch (e) {
-		res.status(400).send(e);
-	}
-});
-
 // PATCH /transaction/:id
-router.patch("/transaction/:id", async (req, res) => {
+router.patch("/transaction/:id", authenticate, async (req, res) => {
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ["description", "transactionDate", "paymentMode", "amount"];
 
@@ -49,13 +65,14 @@ router.patch("/transaction/:id", async (req, res) => {
 	}
 
 	try {
-		const transaction = await Transaction.findById(req.params.id);
-		updates.forEach((update) => (transaction[update] = req.body[update]));
-		await transaction.save();
+		const transaction = await Transaction.findOne({ _id: req.params.id, user: req.user._id });
 
 		if (!transaction) {
 			res.status(404).send({ error: "Transaction not found for updation." });
 		}
+
+		updates.forEach((update) => (transaction[update] = req.body[update]));
+		await transaction.save();
 
 		res.status(200).send(transaction);
 	} catch (error) {
@@ -64,9 +81,13 @@ router.patch("/transaction/:id", async (req, res) => {
 });
 
 // DELETE /transaction/:id
-router.delete("/transaction/:id", async (req, res) => {
+router.delete("/transaction/:id", authenticate, async (req, res) => {
 	try {
-		const transaction = await Transaction.findByIdAndDelete(req.params.id);
+		const transaction = await Transaction.findOneAndDelete({
+			_id: req.params.id,
+			user: req.user._id,
+		});
+
 		if (!transaction) {
 			res.status(404).send({ error: "Transaction not found for deletion" });
 		}
