@@ -5,7 +5,7 @@ const healthRouter = require("./routers/health");
 const transactionRouter = require("./routers/transactions");
 const userRouter = require("./routers/user");
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
 const app = express();
 
 app.use(express.json());

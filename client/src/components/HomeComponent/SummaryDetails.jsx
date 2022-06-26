@@ -23,7 +23,7 @@ const styles = (theme) => ({
 		alignItems: "flex-end",
 	},
 	bodyData: {
-		color: theme.palette.common.white,
+		color: "#FFFFFFA5",
 		fontSize: theme.typography.pxToRem(72),
 		fontWeight: "100",
 	},

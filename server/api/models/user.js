@@ -6,45 +6,50 @@ const { Transaction } = require("./transactions");
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-	name: {
-		type: String,
-		required: true,
-		trim: true,
-	},
-	email: {
-		type: String,
-		unique: true,
-		required: true.value,
-		trim: true,
-		validate(value) {
-			if (!validator.isEmail(value)) {
-				throw new Error("Email is Invalid");
-			}
+const userSchema = new Schema(
+	{
+		name: {
+			type: String,
+			required: true,
+			trim: true,
 		},
-	},
-	password: {
-		type: String,
-		required: true,
-	},
-	phoneNumber: {
-		type: Number,
-		required: false,
-		validate(value) {
-			if (!validator.isMobilePhone(value.toString(), ["en-IN"])) {
-				throw new Error("Phone Number is Invalid");
-			}
-		},
-	},
-	tokens: [
-		{
-			token: {
-				type: String,
-				required: true,
+		email: {
+			type: String,
+			unique: true,
+			required: true.value,
+			trim: true,
+			validate(value) {
+				if (!validator.isEmail(value)) {
+					throw new Error("Email is Invalid");
+				}
 			},
 		},
-	],
-});
+		password: {
+			type: String,
+			required: true,
+		},
+		phoneNumber: {
+			type: Number,
+			required: false,
+			validate(value) {
+				if (!validator.isMobilePhone(value.toString(), ["en-IN"])) {
+					throw new Error("Phone Number is Invalid");
+				}
+			},
+		},
+		tokens: [
+			{
+				token: {
+					type: String,
+					required: true,
+				},
+			},
+		],
+	},
+	{
+		timestamps: true,
+	},
+);
 
 userSchema.virtual("transactions", {
 	ref: "Transaction",
@@ -64,7 +69,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.generateAuthToken = async function () {
 	const user = this;
-	const token = jwt.sign({ _id: user._id.toString() }, "thisismyauthtokensecretpassword");
+	const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET_KEY);
 
 	user.tokens = user.tokens.concat({ token });
 	await user.save();
