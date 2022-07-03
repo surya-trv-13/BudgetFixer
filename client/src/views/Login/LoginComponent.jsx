@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import { Grid } from "@material-ui/core";
 import LayoutWrapper from "../../components/Wrappers/LayoutWrapper";
-import homeComponentGetter from "../../utils/component-getters/homeComponentGetter";
+import loginComponentGetter from "../../utils/component-getters/loginComponentGetter";
 
 const styles = (theme) => ({
 	box: {
@@ -23,12 +23,12 @@ const propTypes = {
 	layoutConfig: PropTypes.object.isRequired,
 };
 
-const HomeComponent = ({ classes, layoutConfig }) => (
+const LoginComponent = ({ classes, layoutConfig }) => (
 	<Grid container className={classes.box}>
-		<LayoutWrapper layoutConfig={layoutConfig} componentGetter={homeComponentGetter} />
+		<LayoutWrapper layoutConfig={layoutConfig} componentGetter={loginComponentGetter} />
 	</Grid>
 );
 
-HomeComponent.propTypes = propTypes;
+LoginComponent.propTypes = propTypes;
 
-export default withStyles(styles, { withTheme: true })(HomeComponent);
+export default withStyles(styles, { withTheme: true })(LoginComponent);

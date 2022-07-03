@@ -1,0 +1,73 @@
+{
+	"0": {
+		"xs": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "16",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "login-component"
+				}
+			]
+		},
+		"sm": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "16",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "login-component"
+				}
+			]
+        },
+		"md": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "32",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "login-component"
+				}
+			]
+		},
+		"lg": {
+			"root": true,
+			"height": "100%",
+			"width": "100%",
+			"spacing": "128",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "login-component"
+				}
+			]
+        },
+		"xl": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "64",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "login-component"
+				}
+			]
+        }
+	}
+}

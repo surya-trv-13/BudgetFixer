@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const HOME_DASHBOARD_COMPONENT = Object.freeze({
 	MONTHLY_SALARY: "monthly-salary",
 	OPENING_BALANCE: "opening-balance",
@@ -7,4 +6,8 @@ export const HOME_DASHBOARD_COMPONENT = Object.freeze({
 	FILTER_BOX: "filter-box",
 	GRAPH_CONFIG: "graph-config",
 	MONTHLY_GRID: "monthly-grid",
+});
+
+export const LOGIN_COMPONENT = Object.freeze({
+	LOGIN_COMPONENT: "login-component",
 });
