@@ -12,8 +12,15 @@ html {
 	font-size: calc(0.75vh + 0.75vw);
 }
 
-div::-webkit-scrollbar-thumb {
-	background-color: #03DAC6;
+div::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	background-color: transparent;
+}
+
+div::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px #03DAC6;
+	background-color: transparent;
 }
 
 body {

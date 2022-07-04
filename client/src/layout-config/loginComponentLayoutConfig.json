@@ -5,7 +5,7 @@
 			"alignment": "horizontal",
 			"height": "100%",
 			"width": "100%",
-			"spacing": "16",
+			"spacing": "128",
 			"content": [
 				{
 					"height": "100%",
@@ -19,7 +19,7 @@
 			"alignment": "horizontal",
 			"height": "100%",
 			"width": "100%",
-			"spacing": "16",
+			"spacing": "128",
 			"content": [
 				{
 					"height": "100%",
@@ -33,7 +33,7 @@
 			"alignment": "horizontal",
 			"height": "100%",
 			"width": "100%",
-			"spacing": "32",
+			"spacing": "128",
 			"content": [
 				{
 					"height": "100%",
@@ -60,7 +60,7 @@
 			"alignment": "horizontal",
 			"height": "100%",
 			"width": "100%",
-			"spacing": "64",
+			"spacing": "128",
 			"content": [
 				{
 					"height": "100%",
