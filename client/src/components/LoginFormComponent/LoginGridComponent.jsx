@@ -14,6 +14,19 @@ const styles = (theme) => ({
 	imgIllustrtaion: {
 		height: theme.typography.pxToRem(500),
 	},
+	ilustration: {
+		height: "100%",
+		width: "100%",
+	},
+	imageDiv: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	verticalDivider: {
+		width: theme.typography.pxToRem(1),
+		marginLeft: theme.typography.pxToRem(72),
+	},
 });
 
 const propTypes = {
@@ -26,11 +39,16 @@ const LoginGridComponent = ({ classes }) => (
 			<LoginForm />
 		</Grid>
 		<Grid item xs={6}>
-			<Grid container direction="row">
+			<Grid container direction="row" className={classes.ilustration}>
 				<Grid xs={1}>
-					<Divider orientation="vertical" variant="middle" />
+					<Divider
+						orientation="vertical"
+						variant="inset"
+						light
+						className={classes.verticalDivider}
+					/>
 				</Grid>
-				<Grid xs={11}>
+				<Grid xs={11} className={classes.imageDiv}>
 					<img src={LoginIllustration} alt="Login" className={classes.imgIllustrtaion} />
 				</Grid>
 			</Grid>
