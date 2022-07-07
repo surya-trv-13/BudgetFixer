@@ -25,7 +25,8 @@ const styles = (theme) => ({
 	},
 	verticalDivider: {
 		width: theme.typography.pxToRem(1),
-		marginLeft: theme.typography.pxToRem(72),
+		height: "95%",
+		margin: theme.typography.pxToRem(20),
 	},
 });
 
