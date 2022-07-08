@@ -133,5 +133,10 @@ export default createTheme({
 				borderRadius: pxToRem(4),
 			},
 		},
+		MuiFormControl: {
+			fullWidth: {
+				margin: `${pxToRem(10)} 0`,
+			},
+		},
 	},
 });

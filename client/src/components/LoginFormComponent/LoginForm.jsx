@@ -31,8 +31,8 @@ const LoginForm = ({ classes }) => {
 				<Typography variant="h1" color="primary">
 					Login
 				</Typography>
-				<TextField label="Username" variant="outlined" />
-				<TextField label="Password" variant="outlined" type="password" />
+				<TextField label="Username" variant="outlined" fullWidth />
+				<TextField label="Password" variant="outlined" type="password" fullWidth />
 			</Box>
 		</Box>
 	);
