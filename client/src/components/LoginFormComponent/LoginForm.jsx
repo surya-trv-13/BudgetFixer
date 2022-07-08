@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
-import { Box, TextField, Typography } from "@material-ui/core";
+import { Box, Button, TextField, Typography } from "@material-ui/core";
 
 const styles = (theme) => ({
 	root: {
@@ -24,15 +24,43 @@ const propTypes = {
 };
 
 const LoginForm = ({ classes }) => {
-	const handleOps = () => {};
+	const [credentials, setCredentials] = useState({
+		username: "",
+		password: "",
+	});
+
+	const handleChange = (event) => {
+		setCredentials({ ...credentials, [event.target.name]: event.target.value });
+
+		console.log(event.target.value);
+	};
+
 	return (
 		<Box className={classes.root}>
 			<Box className={classes.loginForm}>
-				<Typography variant="h1" color="primary">
-					Login
-				</Typography>
-				<TextField label="Username" variant="outlined" fullWidth />
-				<TextField label="Password" variant="outlined" type="password" fullWidth />
+				<form>
+					<Typography variant="h1" color="primary">
+						Login
+					</Typography>
+					<TextField
+						label="Username"
+						variant="outlined"
+						fullWidth
+						onChange={handleChange}
+						name="username"
+					/>
+					<TextField
+						label="Password"
+						variant="outlined"
+						type="password"
+						fullWidth
+						onChange={handleChange}
+						name="password"
+					/>
+					<Button type="submit" variant="contained">
+						Log In
+					</Button>
+				</form>
 			</Box>
 		</Box>
 	);
