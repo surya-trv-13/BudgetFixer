@@ -14,7 +14,7 @@ const styles = (theme) => ({
 		},
 		boxSizing: "border-box",
 		width: "100%",
-		padding: theme.typography.pxToRem(8),
+		padding: `${theme.typography.pxToRem(8)} ${theme.typography.pxToRem(58)}`,
 	},
 });
 

@@ -30,7 +30,7 @@ export default createTheme({
 			secondary: "#000000",
 		},
 		background: {
-			default: "#121212",
+			default: "#181818",
 		},
 		divider: "rgb(255,255,255,0.5)",
 		grey: {
@@ -47,7 +47,7 @@ export default createTheme({
 			color: "#FFFFFF",
 		},
 		solidBackground: {
-			main: "#1E1E1E",
+			main: "#282828",
 		},
 	},
 	spacing: 8,
@@ -88,7 +88,6 @@ export default createTheme({
 			color: "rgb(255,255,255,0.85)",
 			lineHeight: "normal",
 		},
-		// used call prep
 		subtitle2: {
 			fontSize: pxToRem(18),
 			color: "rgb(255,255,255,0.85)",
@@ -97,7 +96,6 @@ export default createTheme({
 			fontSize: pxToRem(20),
 			color: "rgb(255,255,255)",
 		},
-		// used call prep
 		body2: {
 			fontSize: pxToRem(20),
 			color: "rgb(255,255,255,0.65)",
@@ -136,6 +134,59 @@ export default createTheme({
 		MuiFormControl: {
 			fullWidth: {
 				margin: `${pxToRem(10)} 0`,
+			},
+		},
+		MuiOutlinedInput: {
+			input: {
+				padding: `${pxToRem(28.75)} ${pxToRem(14)}`,
+			},
+			root: {
+				"&:hover $notchedOutline": {
+					borderColor: "#BB86FC",
+				},
+				"& $Mui-focused": {
+					borderWidth: pxToRem(1),
+				},
+				borderRadius: pxToRem(4),
+				borderWidth: pxToRem(1),
+			},
+			notchedOutline: {
+				borderColor: "#FFFFFFA6",
+				borderWidth: pxToRem(1),
+			},
+		},
+		MuiInputLabel: {
+			outlined: {
+				transform: `translate(${pxToRem(25)}, ${pxToRem(30)}) scale(1)`,
+			},
+			root: {
+				transform: `translate(${pxToRem(0)}, ${pxToRem(24)}) scale(1)`,
+			},
+		},
+		PrivateNotchedOutline: {
+			root: {
+				padding: `0 ${pxToRem(8)}`,
+				top: `-${pxToRem(5)}`,
+				borderWidth: pxToRem(1),
+				marginInlineStart: pxToRem(2),
+				marginInlineEnd: pxToRem(2),
+			},
+			legendNotched: {
+				maxWidth: pxToRem(1000),
+				paddingInlineStart: pxToRem(2),
+				paddingInlineEnd: pxToRem(2),
+			},
+			legendLabelled: {
+				height: pxToRem(11),
+				"& > $span": {
+					paddingLeft: pxToRem(5),
+					paddingRight: pxToRem(5),
+				},
+			},
+		},
+		MuiInputBase: {
+			root: {
+				color: "#FFFFFFA5",
 			},
 		},
 	},

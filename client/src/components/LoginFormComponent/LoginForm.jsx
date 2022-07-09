@@ -17,6 +17,23 @@ const styles = (theme) => ({
 		height: "inherit",
 		width: "inherit",
 	},
+	textField: {
+		"& .MuiFormLabel-root": {
+			fontSize: theme.typography.pxToRem(18.75),
+		},
+		"& .MuiInputLabel-outlined.MuiInputLabel-shrink": {
+			transform: `translate(${theme.typography.pxToRem(27)}, -${theme.typography.pxToRem(
+				7
+			)})`,
+		},
+		"& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+			borderWidth: theme.typography.pxToRem(2),
+		},
+	},
+	signUpLink: {
+		textDecoration: "none",
+		color: theme.palette.secondary.main,
+	},
 });
 
 const propTypes = {
@@ -48,6 +65,8 @@ const LoginForm = ({ classes }) => {
 						fullWidth
 						onChange={handleChange}
 						name="username"
+						className={classes.textField}
+						placeholder="Enter your email address..."
 					/>
 					<TextField
 						label="Password"
@@ -56,7 +75,15 @@ const LoginForm = ({ classes }) => {
 						fullWidth
 						onChange={handleChange}
 						name="password"
+						className={classes.textField}
+						placeholder="**********"
 					/>
+					<Typography>
+						Don&apos;t have an account?{" "}
+						<a href="https://www.google.com" className={classes.signUpLink}>
+							Sign Up
+						</a>
+					</Typography>
 					<Button type="submit" variant="contained">
 						Log In
 					</Button>
