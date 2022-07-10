@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import { Grid } from "@material-ui/core";
 import LayoutWrapper from "../../components/Wrappers/LayoutWrapper";
-import loginComponentGetter from "../../utils/component-getters/loginComponentGetter";
+import signUpComponentGetter from "../../utils/component-getters/signUpComponentGetter";
 
 const styles = (theme) => ({
 	box: {
@@ -25,7 +25,7 @@ const propTypes = {
 
 const SignUpComponent = ({ classes, layoutConfig }) => (
 	<Grid container className={classes.box}>
-		<LayoutWrapper layoutConfig={layoutConfig} componentGetter={loginComponentGetter} />
+		<LayoutWrapper layoutConfig={layoutConfig} componentGetter={signUpComponentGetter} />
 	</Grid>
 );
 

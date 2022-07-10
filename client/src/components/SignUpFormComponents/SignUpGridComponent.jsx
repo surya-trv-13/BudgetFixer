@@ -1,8 +1,8 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import { Divider, Grid } from "@material-ui/core";
-import { PropTypes } from "prop-types";
-// import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
 import SignUpIllustation from "../../static/image/signUpIllustartion.png";
 
 const styles = (theme) => ({
@@ -36,11 +36,11 @@ const propTypes = {
 
 const SignUpGridComponent = ({ classes }) => (
 	<Grid container direction="row" className={classes.root}>
-		<Grid item xs={5}>
-			<LoginForm />
-		</Grid>
 		<Grid item xs={7}>
 			<Grid container direction="row" className={classes.ilustration}>
+				<Grid item xs={11} className={classes.imageDiv}>
+					<img src={SignUpIllustation} alt="Login" className={classes.imgIllustrtaion} />
+				</Grid>
 				<Grid item xs={1}>
 					<Divider
 						orientation="vertical"
@@ -49,10 +49,10 @@ const SignUpGridComponent = ({ classes }) => (
 						className={classes.verticalDivider}
 					/>
 				</Grid>
-				<Grid item xs={11} className={classes.imageDiv}>
-					<img src={LoginIllustration} alt="Login" className={classes.imgIllustrtaion} />
-				</Grid>
 			</Grid>
+		</Grid>
+		<Grid item xs={5}>
+			<SignUpForm />
 		</Grid>
 	</Grid>
 );

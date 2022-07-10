@@ -1,9 +1,9 @@
 import React from "react";
 import InvalidComponentIdException from "../../Exceptions/InvalidComponentIdException";
 import { SIGNUP_COMPONENT } from "../componentIDs";
-import LoginGridComponent from "../../components/LoginFormComponent/LoginGridComponent";
+import SignUpGridComponent from "../../components/SignUpFormComponents/SignUpGridComponent";
 
-const getSignUpForm = () => <LoginGridComponent />;
+const getSignUpForm = () => <SignUpGridComponent />;
 
 const getComponent = (componentId = "") => {
 	switch (componentId) {
