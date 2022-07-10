@@ -2,8 +2,8 @@ import React from "react";
 import { withStyles } from "@material-ui/styles";
 import { Divider, Grid } from "@material-ui/core";
 import { PropTypes } from "prop-types";
-import LoginForm from "./LoginForm";
-import LoginIllustration from "../../static/image/loginIllustration.png";
+// import LoginForm from "./LoginForm";
+import SignUpIllustation from "../../static/image/signUpIllustartion.png";
 
 const styles = (theme) => ({
 	root: {
@@ -34,7 +34,7 @@ const propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-const LoginGridComponent = ({ classes }) => (
+const SignUpGridComponent = ({ classes }) => (
 	<Grid container direction="row" className={classes.root}>
 		<Grid item xs={5}>
 			<LoginForm />
@@ -57,6 +57,6 @@ const LoginGridComponent = ({ classes }) => (
 	</Grid>
 );
 
-LoginGridComponent.propTypes = propTypes;
+SignUpGridComponent.propTypes = propTypes;
 
-export default withStyles(styles, { withTheme: true })(LoginGridComponent);
+export default withStyles(styles, { withTheme: true })(SignUpGridComponent);

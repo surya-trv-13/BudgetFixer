@@ -14,7 +14,7 @@ const styles = (theme) => ({
 		padding: `${theme.typography.pxToRem(50)} ${theme.typography.pxToRem(30)}`,
 	},
 	loginForm: {
-		height: "inherit",
+		height: "auto",
 		width: "inherit",
 	},
 	textField: {
@@ -33,6 +33,24 @@ const styles = (theme) => ({
 	signUpLink: {
 		textDecoration: "none",
 		color: theme.palette.secondary.main,
+	},
+	loginButton: {
+		padding: `${theme.typography.pxToRem(6)} ${theme.typography.pxToRem(16)}`,
+		minWidth: theme.typography.pxToRem(64),
+		borderRadius: theme.typography.pxToRem(4),
+		backgroundColor: theme.palette.primary.main,
+		color: "#FFFFFFA6",
+		border: `${theme.typography.pxToRem(1)} solid ${theme.palette.primary.main}`,
+		"&:hover": {
+			backgroundColor: theme.palette.solidBackground.main,
+			color: theme.palette.primary.main,
+		},
+	},
+	header: {
+		marginBottom: theme.typography.pxToRem(20),
+	},
+	signupText: {
+		margin: `${theme.typography.pxToRem(7)} 0`,
 	},
 });
 
@@ -56,8 +74,8 @@ const LoginForm = ({ classes }) => {
 		<Box className={classes.root}>
 			<Box className={classes.loginForm}>
 				<form>
-					<Typography variant="h1" color="primary">
-						Login
+					<Typography variant="h1" color="primary" className={classes.header}>
+						Login to your account
 					</Typography>
 					<TextField
 						label="Username"
@@ -78,13 +96,13 @@ const LoginForm = ({ classes }) => {
 						className={classes.textField}
 						placeholder="**********"
 					/>
-					<Typography>
+					<Typography className={classes.signupText}>
 						Don&apos;t have an account?{" "}
 						<a href="https://www.google.com" className={classes.signUpLink}>
 							Sign Up
 						</a>
 					</Typography>
-					<Button type="submit" variant="contained">
+					<Button type="submit" variant="contained" className={classes.loginButton}>
 						Log In
 					</Button>
 				</form>

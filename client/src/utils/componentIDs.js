@@ -11,3 +11,7 @@ export const HOME_DASHBOARD_COMPONENT = Object.freeze({
 export const LOGIN_COMPONENT = Object.freeze({
 	LOGIN_COMPONENT: "login-component",
 });
+
+export const SIGNUP_COMPONENT = Object.freeze({
+	SIGN_COMPONENT: "signup-component",
+});

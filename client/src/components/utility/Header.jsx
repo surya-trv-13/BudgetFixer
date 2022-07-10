@@ -52,6 +52,9 @@ const styles = (theme) => ({
 	iconButton: {
 		padding: theme.typography.pxToRem(12),
 	},
+	emptyRightBox: {
+		width: theme.typography.pxToRem(350),
+	},
 });
 
 const propTypes = {
@@ -59,16 +62,19 @@ const propTypes = {
 	title: PropTypes.string,
 	showLogo: PropTypes.bool,
 	tagText: PropTypes.string,
-	showTag: PropTypes.bool.isRequired,
+	showTag: PropTypes.bool,
+	showLoggedIn: PropTypes.bool,
 };
 
 const defaultProps = {
 	title: "",
 	showLogo: false,
+	showTag: false,
 	tagText: "Dashboard",
+	showLoggedIn: false,
 };
 
-const Header = ({ classes, title, showLogo, tagText, showTag }) => {
+const Header = ({ classes, title, showLogo, tagText, showTag, showLoggedIn }) => {
 	const handleMoreOps = () => {};
 	return (
 		<RowFlex rootClass={classes.rowFlexStyle}>
@@ -85,15 +91,18 @@ const Header = ({ classes, title, showLogo, tagText, showTag }) => {
 			) : (
 				<Box></Box>
 			)}
-
-			<Box className={classes.userDetails}>
-				<Typography variant="h4" className={classes.userName}>
-					John Doe
-				</Typography>
-				<IconButton className={classes.iconButton} onClick={handleMoreOps}>
-					<MoreVertIcon className={classes.moreOpsIcon} />
-				</IconButton>
-			</Box>
+			{showLoggedIn ? (
+				<Box className={classes.userDetails}>
+					<Typography variant="h4" className={classes.userName}>
+						John Doe
+					</Typography>
+					<IconButton className={classes.iconButton} onClick={handleMoreOps}>
+						<MoreVertIcon className={classes.moreOpsIcon} />
+					</IconButton>
+				</Box>
+			) : (
+				<Box className={classes.emptyRightBox}></Box>
+			)}
 		</RowFlex>
 	);
 };

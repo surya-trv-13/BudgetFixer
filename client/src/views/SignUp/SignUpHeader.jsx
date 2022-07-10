@@ -14,12 +14,12 @@ const propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-const LoginHeader = ({ classes }) => (
+const SignUpHeader = ({ classes }) => (
 	<Box className={classes.root}>
-		<Header title="Budget Fixer" showTag showLogo tagText="SignIn" />
+		<Header title="Budget Fixer" showLogo showTag tagText="Create Account" />
 	</Box>
 );
 
-LoginHeader.propTypes = propTypes;
+SignUpHeader.propTypes = propTypes;
 
-export default withStyles(styles, { withTheme: true })(LoginHeader);
+export default withStyles(styles, { withTheme: true })(SignUpHeader);

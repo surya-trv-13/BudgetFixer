@@ -1,0 +1,73 @@
+{
+	"0": {
+		"xs": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "128",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "signup-component"
+				}
+			]
+		},
+		"sm": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "128",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "signup-component"
+				}
+			]
+        },
+		"md": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "128",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "signup-component"
+				}
+			]
+		},
+		"lg": {
+			"root": true,
+			"height": "100%",
+			"width": "100%",
+			"spacing": "128",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "signup-component"
+				}
+			]
+        },
+		"xl": {
+			"root": true,
+			"alignment": "horizontal",
+			"height": "100%",
+			"width": "100%",
+			"spacing": "128",
+			"content": [
+				{
+					"height": "100%",
+					"width": "100%",
+					"component": "signup-component"
+				}
+			]
+        }
+	}
+}
