@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
+import { Link, Outlet } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 
 const styles = (theme) => ({
@@ -116,13 +117,14 @@ const SignUpForm = ({ classes }) => {
 					/>
 					<Typography className={classes.signupText}>
 						Already have an account?{" "}
-						<a href="https://www.google.com" className={classes.signUpLink}>
+						<Link to="/Login" className={classes.signUpLink}>
 							Log in
-						</a>
+						</Link>
 					</Typography>
 					<Button type="submit" variant="contained" className={classes.loginButton}>
 						Sign Up
 					</Button>
+					<Outlet />
 				</form>
 			</Box>
 		</Box>

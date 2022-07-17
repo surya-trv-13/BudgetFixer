@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { withStyles } from "@material-ui/styles";
+import { Link, Outlet } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 
@@ -98,13 +99,14 @@ const LoginForm = ({ classes }) => {
 					/>
 					<Typography className={classes.signupText}>
 						Don&apos;t have an account?{" "}
-						<a href="https://www.google.com" className={classes.signUpLink}>
+						<Link to="/SignUp" className={classes.signUpLink}>
 							Sign Up
-						</a>
+						</Link>
 					</Typography>
 					<Button type="submit" variant="contained" className={classes.loginButton}>
 						Log In
 					</Button>
+					<Outlet />
 				</form>
 			</Box>
 		</Box>

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { Provider } from "react-redux";
 import { MuiThemeProvider } from "@material-ui/core/styles";
+import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./utils/theme/theme";
@@ -11,9 +12,11 @@ import store from "./store";
 ReactDOM.render(
 	<Provider store={store}>
 		<MuiThemeProvider theme={theme}>
-			<React.StrictMode>
-				<App />
-			</React.StrictMode>
+			<Router>
+				<React.StrictMode>
+					<App />
+				</React.StrictMode>
+			</Router>
 		</MuiThemeProvider>
 	</Provider>,
 	document.getElementById("root")
