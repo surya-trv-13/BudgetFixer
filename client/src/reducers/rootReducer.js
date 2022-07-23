@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import inputValueReducer from "./inputValueReducer";
+import loginApiReducer from "./authReducers/loginApiReducer";
+import registerApiReducer from "./authReducers/registerApiReducer";
 
 const rootReducer = combineReducers({
-	inputValueReducer,
+	loginApiReducer,
+	registerApiReducer,
 });
 
 export default rootReducer;

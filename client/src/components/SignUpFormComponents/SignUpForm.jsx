@@ -67,8 +67,6 @@ const SignUpForm = ({ classes }) => {
 
 	const handleChange = (event) => {
 		setCredentials({ ...credentials, [event.target.name]: event.target.value });
-
-		console.log(event.target.value);
 	};
 
 	return (
@@ -88,7 +86,7 @@ const SignUpForm = ({ classes }) => {
 						placeholder="Enter your name..."
 					/>
 					<TextField
-						label="Username"
+						label="Email"
 						variant="outlined"
 						fullWidth
 						onChange={handleChange}
