@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withStyles } from "@material-ui/styles";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
+import { useAuthSelectors } from "../../selectors/authSelactors";
 
 const styles = (theme) => ({
 	root: {
@@ -57,33 +58,49 @@ const styles = (theme) => ({
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
 };
 
-const LoginForm = ({ classes }) => {
+const LoginForm = ({ classes, history }) => {
+	const { userLoginStart, loginData, isLoginLoading } = useAuthSelectors();
+	const navigate = useNavigate();
+
 	const [credentials, setCredentials] = useState({
-		username: "",
+		email: "",
 		password: "",
 	});
 
 	const handleChange = (event) => {
 		setCredentials({ ...credentials, [event.target.name]: event.target.value });
-
-		console.log(event.target.value);
 	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		userLoginStart(credentials);
+	};
+
+	useEffect(() => {
+		if (!isLoginLoading && loginData?.token) {
+			localStorage.setItem("authToken", loginData.token);
+			setCredentials({ email: "value" });
+			navigate("/");
+		}
+	}, [isLoginLoading]);
 
 	return (
 		<Box className={classes.root}>
 			<Box className={classes.loginForm}>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<Typography variant="h1" color="primary" className={classes.header}>
 						Login to your account
 					</Typography>
 					<TextField
-						label="Username"
+						label="Email"
 						variant="outlined"
 						fullWidth
 						onChange={handleChange}
-						name="username"
+						name="email"
 						className={classes.textField}
 						placeholder="Enter your email address..."
 					/>

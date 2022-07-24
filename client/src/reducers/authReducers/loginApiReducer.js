@@ -19,8 +19,8 @@ const loginApiReducer = (state = initialState, action = {}) => {
 			};
 		case LOGIN_API_CALL_SUCCESS:
 			return {
-				data: action.payload,
 				...initialState,
+				data: action.payload,
 			};
 		case LOGIN_API_CALL_FAILURE:
 			return {
