@@ -76,7 +76,7 @@ const SignUpForm = ({ classes }) => {
 	};
 
 	const handleSubmit = (e) => {
-		e.prevntDefault();
+		e.preventDefault();
 		userRegisterStart(credentials);
 	};
 

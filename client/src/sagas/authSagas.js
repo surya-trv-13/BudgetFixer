@@ -10,8 +10,8 @@ import { userLoginApi, userRegister } from "../services/authService";
 // handler
 function* handleLoginApi({ payload }) {
 	try {
-		const data = yield call(userLoginApi, payload.email, payload.password);
-		yield put(setLoginApiSuccess(data?.data));
+		const loginData = yield call(userLoginApi, payload.email, payload.password);
+		yield put(setLoginApiSuccess(loginData?.data));
 	} catch (error) {
 		yield put(setLoginApiFailure(error));
 	}
@@ -19,8 +19,8 @@ function* handleLoginApi({ payload }) {
 
 function* handleRegisterApi({ payload }) {
 	try {
-		const data = yield call(userRegister, payload);
-		yield put(setRegisterCallSuccess(data));
+		const registerData = yield call(userRegister, payload);
+		yield put(setRegisterCallSuccess(registerData?.data));
 	} catch (error) {
 		yield put(setRegisterCallFailure(error));
 	}
