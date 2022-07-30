@@ -3,16 +3,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./views/Login";
 import Home from "./views/Home/index";
 import SignUp from "./views/SignUp/index";
+import { useAuthSelectors } from "./selectors/authSelactors";
 
 const App = () => {
-	console.log(localStorage.getItem("authToken"));
-	const [authToken, setAuthToken] = useState("");
+	const { isTokenRegistered } = useAuthSelectors();
 
-	useEffect(() => {
-		if (localStorage.getItem("authToken")) {
-			setAuthToken(localStorage.getItem("authToken"));
-		}
-	}, [localStorage]);
+	console.log(localStorage.getItem("authToken"));
 
 	return (
 		<Routes>

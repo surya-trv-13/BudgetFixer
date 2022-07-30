@@ -58,11 +58,10 @@ const styles = (theme) => ({
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
-	history: PropTypes.object.isRequired,
 };
 
-const LoginForm = ({ classes, history }) => {
-	const { userLoginStart, loginData, isLoginLoading } = useAuthSelectors();
+const LoginForm = ({ classes }) => {
+	const { userLoginStart, setTokenRegister, loginData, isLoginLoading } = useAuthSelectors();
 	const navigate = useNavigate();
 
 	const [credentials, setCredentials] = useState({
@@ -83,7 +82,7 @@ const LoginForm = ({ classes, history }) => {
 	useEffect(() => {
 		if (!isLoginLoading && loginData?.token) {
 			localStorage.setItem("authToken", loginData.token);
-			setCredentials({ email: "value" });
+			setTokenRegister(true);
 			navigate("/");
 		}
 	}, [isLoginLoading]);

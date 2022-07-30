@@ -16,7 +16,7 @@ const propTypes = {
 
 const HomeHeader = ({ classes }) => (
 	<Box className={classes.root}>
-		<Header title="Budget Fixer" showLogo showTag tagText="Home Dashboard" />
+		<Header title="Budget Fixer" showLogo showTag showLoggedIn tagText="Home Dashboard" />
 	</Box>
 );
 

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
+import { useAuthSelectors } from "../../selectors/authSelactors";
 
 const styles = (theme) => ({
 	root: {
@@ -60,19 +61,37 @@ const propTypes = {
 };
 
 const SignUpForm = ({ classes }) => {
+	const { userRegisterStart, registerData, isRegisterLoading, setTokenRegister } =
+		useAuthSelectors();
+	const navigate = useNavigate();
 	const [credentials, setCredentials] = useState({
-		username: "",
+		name: "",
+		email: "",
 		password: "",
+		phoneNumber: "",
 	});
 
 	const handleChange = (event) => {
 		setCredentials({ ...credentials, [event.target.name]: event.target.value });
 	};
 
+	const handleSubmit = (e) => {
+		e.prevntDefault();
+		userRegisterStart(credentials);
+	};
+
+	useEffect(() => {
+		if (!isRegisterLoading && registerData?.token) {
+			localStorage.setItem("authToken", registerData.token);
+			setTokenRegister(true);
+			navigate("/");
+		}
+	}, [isRegisterLoading]);
+
 	return (
 		<Box className={classes.root}>
 			<Box className={classes.loginForm}>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<Typography variant="h1" color="primary" className={classes.header}>
 						Create Account
 					</Typography>
@@ -84,22 +103,24 @@ const SignUpForm = ({ classes }) => {
 						name="name"
 						className={classes.textField}
 						placeholder="Enter your name..."
+						required
 					/>
 					<TextField
 						label="Email"
 						variant="outlined"
 						fullWidth
 						onChange={handleChange}
-						name="username"
+						name="email"
 						className={classes.textField}
 						placeholder="Enter your email address..."
+						required
 					/>
 					<TextField
 						label="Phone Number"
 						variant="outlined"
 						fullWidth
 						onChange={handleChange}
-						name="phonenumber"
+						name="phoneNumber"
 						className={classes.textField}
 						placeholder="Enter your phone number..."
 					/>
@@ -112,6 +133,7 @@ const SignUpForm = ({ classes }) => {
 						name="password"
 						className={classes.textField}
 						placeholder="**********"
+						required
 					/>
 					<Typography className={classes.signupText}>
 						Already have an account?{" "}
