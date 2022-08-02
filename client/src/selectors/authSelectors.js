@@ -7,7 +7,6 @@ import { isTokenRegisteredAction } from "../actions/authAction/tokenRegisterActi
 import { setRegisterCallStart } from "../actions/authAction/registerApiAction";
 
 export const useAuthSelectors = () => {
-	const dispatch = useDispatch();
 	const isLoginLoading = useSelector((state) => state.loginApiReducer.loading, shallowEqual);
 	const loginData = useSelector((state) => state.loginApiReducer.data, shallowEqual);
 	const loginErrorData = useSelector((state) => state.loginApiReducer.error, shallowEqual);
@@ -22,6 +21,7 @@ export const useAuthSelectors = () => {
 	const registerData = useSelector((state) => state.registerApiReducer.data, shallowEqual);
 	const registerError = useSelector((state) => state.registerApiReducer.error, shallowEqual);
 
+	const dispatch = useDispatch();
 	const userLoginStart = useCallback((data) => dispatch(setLoginApiStart(data)), [dispatch]);
 	const setTokenRegister = useCallback(
 		(data) => dispatch(isTokenRegisteredAction(data)),

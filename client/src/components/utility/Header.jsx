@@ -5,7 +5,7 @@ import { Box, IconButton, Typography } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Logo from "../../static/image/logo1080.png";
 import RowFlex from "./RowFlex";
-import { useAuthSelectors } from "../../selectors/authSelactors";
+import { useAuthSelectors } from "../../selectors/authSelectors";
 
 const styles = (theme) => ({
 	rowFlexStyle: {

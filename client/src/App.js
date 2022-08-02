@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./views/Login";
 import Home from "./views/Home/index";
 import SignUp from "./views/SignUp/index";
-import { useAuthSelectors } from "./selectors/authSelactors";
+import { useAuthSelectors } from "./selectors/authSelectors";
 
 const App = () => {
 	const { isTokenRegistered } = useAuthSelectors();

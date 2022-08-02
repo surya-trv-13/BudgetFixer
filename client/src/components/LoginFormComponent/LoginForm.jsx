@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/styles";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
-import { useAuthSelectors } from "../../selectors/authSelactors";
+import { useAuthSelectors } from "../../selectors/authSelectors";
 
 const styles = (theme) => ({
 	root: {
