@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { Menu, MenuItem } from "@material-ui/core";
 import { useUiSelectors } from "../../selectors/uiSelectors";
 
-const MenuComponent = (props) => {
+const MenuComponent = () => {
 	const { headerMenuAnchorEl, isHeaderMenuOpen, setMenuOpen } = useUiSelectors();
 	const handleClose = () => {
 		setMenuOpen({
@@ -15,6 +14,9 @@ const MenuComponent = (props) => {
 		<Menu
 			id="simple-menu"
 			anchorEl={headerMenuAnchorEl}
+			getContentAnchorEl={null}
+			anchorOrigin={{ vertical: "top", horizontal: "right" }}
+			transformOrigin={{ vertical: "top", horizontal: "center" }}
 			keepMounted
 			open={isHeaderMenuOpen}
 			onClose={handleClose}

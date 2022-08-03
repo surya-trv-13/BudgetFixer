@@ -6,6 +6,8 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Logo from "../../static/image/logo1080.png";
 import RowFlex from "./RowFlex";
 import { useAuthSelectors } from "../../selectors/authSelectors";
+import MenuComponent from "../HomeComponent/MenuComponent";
+import { useUiSelectors } from "../../selectors/uiSelectors";
 
 const styles = (theme) => ({
 	rowFlexStyle: {
@@ -77,9 +79,14 @@ const defaultProps = {
 
 const Header = ({ classes, title, showLogo, tagText, showTag, showLoggedIn }) => {
 	const { loginData } = useAuthSelectors(); // TODO: Will change it to user/me
-	const handleMoreOps = () => {};
+	const { setMenuOpen } = useUiSelectors();
+	const handleMoreOps = (e) => {
+		console.log(e.currentTarget);
+		setMenuOpen({ anchorEl: e.currentTarget, open: true });
+	};
 	return (
 		<RowFlex rootClass={classes.rowFlexStyle}>
+			<MenuComponent />
 			<Box className={classes.title}>
 				{showLogo && <img src={Logo} alt="Logo" className={classes.logo} />}
 				<Typography className={classes.titleString} variant="h2">
