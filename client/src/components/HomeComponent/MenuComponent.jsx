@@ -1,8 +1,27 @@
 import React from "react";
+import { withStyles } from "@material-ui/styles";
+import PropTypes from "prop-types";
 import { Menu, MenuItem } from "@material-ui/core";
 import { useUiSelectors } from "../../selectors/uiSelectors";
 
-const MenuComponent = () => {
+const styles = (theme) => ({
+	menuComponentRoot: {
+		backgroundColor: theme.palette.primary.light,
+	},
+	menuItem: {
+		color: "#FFFFFFA6",
+		"&:hover": {
+			backgroundColor: theme.palette.primary.dark,
+			color: "#FFFFFFA3",
+		},
+	},
+});
+
+const propTypes = {
+	classes: PropTypes.object.isRequired,
+};
+
+const MenuComponent = ({ classes }) => {
 	const { headerMenuAnchorEl, isHeaderMenuOpen, setMenuOpen } = useUiSelectors();
 	const handleClose = () => {
 		setMenuOpen({
@@ -20,14 +39,21 @@ const MenuComponent = () => {
 			keepMounted
 			open={isHeaderMenuOpen}
 			onClose={handleClose}
+			className={classes.menuComponentRoot}
 		>
-			<MenuItem onClick={handleClose}>Profile</MenuItem>
-			<MenuItem onClick={handleClose}>My account</MenuItem>
-			<MenuItem onClick={handleClose}>Logout</MenuItem>
+			<MenuItem className={classes.menuItem} onClick={handleClose}>
+				Profile
+			</MenuItem>
+			<MenuItem className={classes.menuItem} onClick={handleClose}>
+				My account
+			</MenuItem>
+			<MenuItem className={classes.menuItem} onClick={handleClose}>
+				Logout
+			</MenuItem>
 		</Menu>
 	);
 };
 
-MenuComponent.propTypes = {};
+MenuComponent.propTypes = propTypes;
 
-export default MenuComponent;
+export default withStyles(styles, { withTheme: true })(MenuComponent);
