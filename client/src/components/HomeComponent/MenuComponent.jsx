@@ -6,12 +6,28 @@ import { useUiSelectors } from "../../selectors/uiSelectors";
 
 const styles = (theme) => ({
 	menuComponentRoot: {
-		backgroundColor: theme.palette.primary.light,
+		"& .MuiPaper-root": {
+			backgroundColor: theme.palette.background.default,
+			transformOrigin: `${theme.typography.pxToRem(142)} -${theme.typography.pxToRem(
+				16
+			)} !important`,
+			top: `${theme.typography.pxToRem(16)} !important`,
+			left: `100% - ${theme.typography.pxToRem(250)} !important`,
+			"& .MuiList-padding": {
+				paddingTop: theme.typography.pxToRem(8),
+				paddingBottom: theme.typography.pxToRem(8),
+			},
+		},
 	},
 	menuItem: {
 		color: "#FFFFFFA6",
+		paddingTop: theme.typography.pxToRem(6),
+		paddingBottom: theme.typography.pxToRem(6),
+		paddingLeft: theme.typography.pxToRem(16),
+		paddingRight: theme.typography.pxToRem(16),
+		minHeight: theme.typography.pxToRem(48),
 		"&:hover": {
-			backgroundColor: theme.palette.primary.dark,
+			background: theme.palette.solidBackground.main,
 			color: "#FFFFFFA3",
 		},
 	},
@@ -29,6 +45,10 @@ const MenuComponent = ({ classes }) => {
 			open: false,
 		});
 	};
+
+	const handleLogout = () => {
+		handleClose();
+	};
 	return (
 		<Menu
 			id="simple-menu"
@@ -41,14 +61,11 @@ const MenuComponent = ({ classes }) => {
 			onClose={handleClose}
 			className={classes.menuComponentRoot}
 		>
-			<MenuItem className={classes.menuItem} onClick={handleClose}>
-				Profile
-			</MenuItem>
-			<MenuItem className={classes.menuItem} onClick={handleClose}>
-				My account
-			</MenuItem>
-			<MenuItem className={classes.menuItem} onClick={handleClose}>
+			<MenuItem className={classes.menuItem} onClick={handleLogout}>
 				Logout
+			</MenuItem>
+			<MenuItem className={classes.menuItem} onClick={handleClose}>
+				Logout from All Devices
 			</MenuItem>
 		</Menu>
 	);
