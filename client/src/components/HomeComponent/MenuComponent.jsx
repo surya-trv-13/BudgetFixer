@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { Menu, MenuItem } from "@material-ui/core";
 import { useUiSelectors } from "../../selectors/uiSelectors";
+import { useAuthSelectors } from "../../selectors/authSelectors";
 
 const styles = (theme) => ({
 	menuComponentRoot: {
@@ -39,6 +41,18 @@ const propTypes = {
 
 const MenuComponent = ({ classes }) => {
 	const { headerMenuAnchorEl, isHeaderMenuOpen, setMenuOpen } = useUiSelectors();
+	const { userLogOutStart, isLogoutLoading, isLogout, setTokenRegister, isTokenRegistered } =
+		useAuthSelectors();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (!isLogoutLoading && isTokenRegistered) {
+			localStorage.removeItem("authToken");
+			setTokenRegister(false);
+			navigate("/");
+		}
+	}, [isLogoutLoading]);
+
 	const handleClose = () => {
 		setMenuOpen({
 			anchorEl: null,
@@ -48,6 +62,7 @@ const MenuComponent = ({ classes }) => {
 
 	const handleLogout = () => {
 		handleClose();
+		userLogOutStart(localStorage.getItem("authToken"));
 	};
 	return (
 		<Menu

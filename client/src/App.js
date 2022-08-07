@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./views/Login";
 import Home from "./views/Home/index";
@@ -6,9 +6,11 @@ import SignUp from "./views/SignUp/index";
 import { useAuthSelectors } from "./selectors/authSelectors";
 
 const App = () => {
-	const { isTokenRegistered } = useAuthSelectors();
+	const { isTokenRegistered, userLogoutInitalState } = useAuthSelectors();
 
-	console.log(localStorage.getItem("authToken"));
+	// useEffect(() => {
+	// 	userLogoutInitalState(!localStorage.getItem("authToken"));
+	// }, []);
 
 	return (
 		<Routes>

@@ -1,29 +1,29 @@
 import axios from "axios";
 
 const config = {
-	header: {
+	headers: {
 		"Content-Type": "application/json",
 	},
 };
 
 export const userLoginApi = async (email, password) => {
-	const loginData = axios.post("/user/login", { email, password }, config);
+	const loginData = await axios.post("/user/login", { email, password }, config);
 	return loginData;
 };
 
 export const userRegister = async (userData) => {
-	const registerData = axios.post("/user", userData, config);
+	const registerData = await axios.post("/user", userData, config);
 	return registerData;
 };
 
 export const userLogout = async (token) => {
-	config.header.Authorization = `Bearer ${token}`;
-	const logOutData = axios.post("/user/logout", {}, config);
+	config.headers.Authorization = `Bearer ${token}`;
+	const logOutData = await axios.post("/user/logout", {}, config);
 	return logOutData;
 };
 
 export const userLogoutAllDevice = async (token) => {
-	config.header.Authorization = `Bearer ${token}`;
-	const logOutData = axios.post("/user/logoutAll", {}, config);
+	config.headers.Authorization = `Bearer ${token}`;
+	const logOutData = await axios.post("/user/logout", {}, config);
 	return logOutData;
 };

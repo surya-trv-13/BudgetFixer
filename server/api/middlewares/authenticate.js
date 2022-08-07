@@ -13,6 +13,7 @@ const authenticate = async (req, res, next) => {
 
 		req.token = token;
 		req.user = user;
+		res.setHeader("Access-Control-Allow-Headers", "Authorization");
 		next();
 	} catch (error) {
 		res.status(401).send({ error: "Please authenticate." });

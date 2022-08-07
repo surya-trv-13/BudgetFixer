@@ -61,7 +61,8 @@ const propTypes = {
 };
 
 const LoginForm = ({ classes }) => {
-	const { userLoginStart, setTokenRegister, loginData, isLoginLoading } = useAuthSelectors();
+	const { userLoginStart, setTokenRegister, loginData, isLoginLoading, userLogoutInitalState } =
+		useAuthSelectors();
 	const navigate = useNavigate();
 
 	const [credentials, setCredentials] = useState({
@@ -83,9 +84,10 @@ const LoginForm = ({ classes }) => {
 		if (!isLoginLoading && loginData?.token) {
 			localStorage.setItem("authToken", loginData.token);
 			setTokenRegister(true);
+			userLogoutInitalState(false);
 			navigate("/");
 		}
-	}, [isLoginLoading]);
+	}, [loginData]);
 
 	return (
 		<Box className={classes.root}>
