@@ -4,26 +4,32 @@ import { HOME_DASHBOARD_COMPONENT } from "../componentIDs";
 import SummaryDetails from "../../components/HomeComponent/SummaryDetails";
 import GridDetails from "../../components/HomeComponent/GridDetails";
 
-const getAccountBalance = () => <SummaryDetails />;
+const getMonthlySalary = () => (
+	<SummaryDetails dotValue="monthlySalary" boxHeader="Monthly Salary" />
+);
 
-const getUpcomingPayment = () => <SummaryDetails />;
+const getOpeningBalance = () => (
+	<SummaryDetails dotValue="openingBalance" boxHeader="Opening Balance" />
+);
 
-const getPaymentHistory = () => <SummaryDetails />;
+const getSpentAmount = () => <SummaryDetails dotValue="spentAmount" boxHeader="Spent Amount" />;
 
-const getRecentActivities = () => <SummaryDetails />;
+const getRemainingBalance = () => (
+	<SummaryDetails dotValue="remainingBalance" boxHeader="Remaining Balance" />
+);
 
 const getRightSection = () => <GridDetails />;
 
 const getComponent = (componentId = "") => {
 	switch (componentId) {
 		case HOME_DASHBOARD_COMPONENT.MONTHLY_SALARY:
-			return getAccountBalance();
+			return getMonthlySalary();
 		case HOME_DASHBOARD_COMPONENT.OPENING_BALANCE:
-			return getUpcomingPayment();
+			return getOpeningBalance();
 		case HOME_DASHBOARD_COMPONENT.SPENT_AMOUNT:
-			return getPaymentHistory();
+			return getSpentAmount();
 		case HOME_DASHBOARD_COMPONENT.REMAINING_BALANCE:
-			return getRecentActivities();
+			return getRemainingBalance();
 		case HOME_DASHBOARD_COMPONENT.FILTER_BOX:
 			return getRightSection();
 		case HOME_DASHBOARD_COMPONENT.GRAPH_CONFIG:

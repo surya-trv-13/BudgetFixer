@@ -6,6 +6,7 @@ import { setLoginApiStart } from "../actions/authAction/loginApiAction";
 import { isTokenRegisteredAction } from "../actions/authAction/tokenRegisterAction";
 import { setRegisterCallStart } from "../actions/authAction/registerApiAction";
 import { setInitialLogout, setLogoutApiStart } from "../actions/authAction/logoutApiAction";
+import { getUserDetailsAPIStart } from "../actions/authAction/userDetailsApiAction";
 
 export const useAuthSelectors = () => {
 	const isLoginLoading = useSelector((state) => state.loginApiReducer.loading, shallowEqual);
@@ -23,6 +24,11 @@ export const useAuthSelectors = () => {
 	const isLogout = useSelector((state) => state.logoutApiReducer.isLogOutValue, shallowEqual);
 	const registerData = useSelector((state) => state.registerApiReducer.data, shallowEqual);
 	const registerError = useSelector((state) => state.registerApiReducer.error, shallowEqual);
+	const isUserDataLoading = useSelector(
+		(state) => state.userDetailsAPIReducer.loading,
+		shallowEqual
+	);
+	const userData = useSelector((state) => state.userDetailsAPIReducer.userDetails, shallowEqual);
 
 	const dispatch = useDispatch();
 	const userLoginStart = useCallback((data) => dispatch(setLoginApiStart(data)), [dispatch]);
@@ -39,6 +45,10 @@ export const useAuthSelectors = () => {
 		(data) => dispatch(setInitialLogout(data)),
 		[dispatch]
 	);
+	const getUserDetailsStart = useCallback(
+		(token) => dispatch(getUserDetailsAPIStart(token)),
+		[dispatch]
+	);
 
 	return {
 		isLoginLoading,
@@ -50,10 +60,13 @@ export const useAuthSelectors = () => {
 		registerError,
 		isLogoutLoading,
 		isLogout,
+		isUserDataLoading,
+		userData,
 		userLoginStart,
 		setTokenRegister,
 		userRegisterStart,
 		userLogOutStart,
 		userLogoutInitalState,
+		getUserDetailsStart,
 	};
 };

@@ -18,7 +18,6 @@ const logoutApiReducer = (state = initialState, action = {}) => {
 				isLoading: true,
 			};
 		case LOGOUT_API_CALL_SUCCESS:
-			console.log(action.payload.message === "Logout Successfully!");
 			return {
 				isLoading: false,
 				isLogOutValue: action.payload?.message === "Logout Successfully!",

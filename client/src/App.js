@@ -8,9 +8,9 @@ import { useAuthSelectors } from "./selectors/authSelectors";
 const App = () => {
 	const { isTokenRegistered, userLogoutInitalState } = useAuthSelectors();
 
-	// useEffect(() => {
-	// 	userLogoutInitalState(!localStorage.getItem("authToken"));
-	// }, []);
+	useEffect(() => {
+		userLogoutInitalState(!localStorage.getItem("authToken"));
+	}, []);
 
 	return (
 		<Routes>

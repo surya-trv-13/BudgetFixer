@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
@@ -7,6 +7,7 @@ import HomeHeader from "./HomeHeader";
 import HomeFooter from "./HomeFooter";
 import HomeComponent from "./HomeComponent";
 import layoutConfig from "../../layout-config/homeComponentLayoutConfig.json";
+import { useAuthSelectors } from "../../selectors/authSelectors";
 
 const styles = (theme) => ({
 	root: {
@@ -24,7 +25,13 @@ const propTypes = {
 const defaultProps = {};
 
 const HomeContainer = ({ classes }) => {
+	const { getUserDetailsStart } = useAuthSelectors();
 	const layoutConfigHomeComponent = layoutConfig[0];
+
+	useEffect(() => {
+		getUserDetailsStart(localStorage.getItem("authToken"));
+	}, []);
+
 	return (
 		<Box className={classes.root}>
 			<HomeHeader />

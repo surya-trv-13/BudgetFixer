@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
-import { Box, IconButton, Typography } from "@material-ui/core";
+import { Box, IconButton, Typography, Tooltip } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Logo from "../../static/image/logo1080.png";
 import RowFlex from "./RowFlex";
@@ -78,10 +78,9 @@ const defaultProps = {
 };
 
 const Header = ({ classes, title, showLogo, tagText, showTag, showLoggedIn }) => {
-	const { loginData } = useAuthSelectors(); // TODO: Will change it to user/me
+	const { isUserDataLoading, userData } = useAuthSelectors(); // TODO: Will change it to user/me
 	const { setMenuOpen } = useUiSelectors();
 	const handleMoreOps = (e) => {
-		console.log(e.currentTarget);
 		setMenuOpen({ anchorEl: e.currentTarget, open: true });
 	};
 	return (
@@ -102,9 +101,23 @@ const Header = ({ classes, title, showLogo, tagText, showTag, showLoggedIn }) =>
 			)}
 			{showLoggedIn ? (
 				<Box className={classes.userDetails}>
-					<Typography variant="h4" className={classes.userName}>
-						{loginData?.user?.name}
-					</Typography>
+					<Tooltip
+						title={
+							<>
+								<b>Name : </b>
+								{userData?.name}
+								<br />
+								<b>Email : </b>
+								{userData?.email}
+								<br />
+								<b>Phone : </b> {userData?.phoneNumber}
+							</>
+						}
+					>
+						<Typography variant="h4" className={classes.userName}>
+							{!isUserDataLoading && userData?.name}
+						</Typography>
+					</Tooltip>
 					<IconButton className={classes.iconButton} onClick={handleMoreOps}>
 						<MoreVertIcon className={classes.moreOpsIcon} />
 					</IconButton>

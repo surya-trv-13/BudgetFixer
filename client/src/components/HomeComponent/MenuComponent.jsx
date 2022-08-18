@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Menu, MenuItem } from "@material-ui/core";
 import { useUiSelectors } from "../../selectors/uiSelectors";
 import { useAuthSelectors } from "../../selectors/authSelectors";
+import { usePrevious } from "../../hooks/previousHook";
 
 const styles = (theme) => ({
 	menuComponentRoot: {
@@ -41,17 +42,19 @@ const propTypes = {
 
 const MenuComponent = ({ classes }) => {
 	const { headerMenuAnchorEl, isHeaderMenuOpen, setMenuOpen } = useUiSelectors();
-	const { userLogOutStart, isLogoutLoading, isLogout, setTokenRegister, isTokenRegistered } =
-		useAuthSelectors();
+	const { userLogOutStart, isLogoutLoading, isLogout, setTokenRegister } = useAuthSelectors();
 	const navigate = useNavigate();
+	const preValue = usePrevious({ isLogout, isLogoutLoading });
 
-	useEffect(() => {
-		if (!isLogoutLoading && isTokenRegistered) {
-			localStorage.removeItem("authToken");
-			setTokenRegister(false);
-			navigate("/");
-		}
-	}, [isLogoutLoading]);
+	// TODO: Forn now halting logout option
+	// useEffect(() => {
+	// 	console.log(isLogoutLoading, isLogout);
+	// 	if (isLogoutLoading === isLogout) {
+	// 		localStorage.removeItem("authToken");
+	// 		setTokenRegister(false);
+	// 		navigate("/Login");
+	// 	}
+	// }, [JSON.stringify(isLogoutLoading)]);
 
 	const handleClose = () => {
 		setMenuOpen({

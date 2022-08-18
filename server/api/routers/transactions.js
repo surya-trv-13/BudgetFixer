@@ -1,6 +1,5 @@
 const express = require("express");
 const { Transaction } = require("../models/transactions");
-const autheticate = require("../middlewares/authenticate");
 const authenticate = require("../middlewares/authenticate");
 const router = express.Router();
 

@@ -3,6 +3,7 @@ import {
 	LOGIN_API_CALL_START,
 	REGISTER_API_CALL_START,
 	LOGOUT_API_CALL_START,
+	GET_USER_DETAILS_START,
 } from "../actions/actionTypes";
 import { setLoginApiSuccess, setLoginApiFailure } from "../actions/authAction/loginApiAction";
 import {
@@ -10,7 +11,11 @@ import {
 	setRegisterCallFailure,
 } from "../actions/authAction/registerApiAction";
 import { setLogoutApiSuccess, setLogoutApiFailure } from "../actions/authAction/logoutApiAction";
-import { userLoginApi, userRegister, userLogout } from "../services/authService";
+import {
+	getUserDetailsAPISuccess,
+	getUserDetailsAPIFailure,
+} from "../actions/authAction/userDetailsApiAction";
+import { userLoginApi, userRegister, userLogout, getUserData } from "../services/authService";
 
 // handler
 function* handleLoginApi({ payload }) {
@@ -33,11 +38,19 @@ function* handleRegisterApi({ payload }) {
 
 function* handleLogoutApi({ payload }) {
 	try {
-		console.log(payload);
 		const logoutData = yield call(userLogout, payload);
 		yield put(setLogoutApiSuccess(logoutData?.data));
 	} catch (error) {
 		yield put(setLogoutApiFailure());
+	}
+}
+
+function* handleUserDetails({ payload }) {
+	try {
+		const userData = yield call(getUserData, payload);
+		yield put(getUserDetailsAPISuccess(userData?.data));
+	} catch (error) {
+		yield put(getUserDetailsAPIFailure(error));
 	}
 }
 
@@ -52,4 +65,8 @@ export function* watchRegister() {
 
 export function* watchLogout() {
 	yield takeLatest(LOGOUT_API_CALL_START, handleLogoutApi);
+}
+
+export function* watchUserDetails() {
+	yield takeLatest(GET_USER_DETAILS_START, handleUserDetails);
 }

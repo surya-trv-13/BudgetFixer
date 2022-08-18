@@ -24,6 +24,12 @@ export const userLogout = async (token) => {
 
 export const userLogoutAllDevice = async (token) => {
 	config.headers.Authorization = `Bearer ${token}`;
-	const logOutData = await axios.post("/user/logout", {}, config);
+	const logOutData = await axios.post("/user/logoutAll", {}, config);
 	return logOutData;
+};
+
+export const getUserData = async (token) => {
+	config.headers.Authorization = `Bearer ${token}`;
+	const userDetails = await axios.get("/user/me", config);
+	return userDetails;
 };

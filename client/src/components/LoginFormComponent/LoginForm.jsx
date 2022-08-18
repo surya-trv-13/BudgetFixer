@@ -84,10 +84,10 @@ const LoginForm = ({ classes }) => {
 		if (!isLoginLoading && loginData?.token) {
 			localStorage.setItem("authToken", loginData.token);
 			setTokenRegister(true);
-			userLogoutInitalState(false);
+			// userLogoutInitalState(false);
 			navigate("/");
 		}
-	}, [loginData]);
+	}, [isLoginLoading]);
 
 	return (
 		<Box className={classes.root}>
