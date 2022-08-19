@@ -19,9 +19,14 @@ div::-webkit-scrollbar {
 }
 
 div::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px #03DAC6;
+	-webkit-box-shadow: inset 0 0 6px transparent;
 	background-color: transparent;
 }
+
+::-webkit-scrollbar-thumb {
+	background: #181818; 
+	border-radius: 10px;
+  }
 
 body {
 	font-family: "Roboto";
