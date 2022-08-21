@@ -7,6 +7,8 @@ import logoutApiReducer from "./authReducers/logoutApiReducer";
 import userDetailsAPIReducer from "./authReducers/userDetailsAPIReducer";
 import getDashboardReducer from "./dashboardReducers/getDashboardReducer";
 import setDashboardReducer from "./dashboardReducers/setDashboardReducer";
+import getTransactionReducer from "./transactionReducers/getTransactionReducer";
+import setTransactionReducer from "./transactionReducers/setTransactionReducer";
 
 const rootReducer = combineReducers({
 	loginApiReducer,
@@ -17,6 +19,8 @@ const rootReducer = combineReducers({
 	userDetailsAPIReducer,
 	getDashboardReducer,
 	setDashboardReducer,
+	getTransactionReducer,
+	setTransactionReducer,
 });
 
 export default rootReducer;

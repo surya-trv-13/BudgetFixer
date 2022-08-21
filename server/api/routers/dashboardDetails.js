@@ -15,12 +15,12 @@ router.post("/dashboard", authenticate, async (req, res) => {
 });
 
 // GET /dashboard
-router.get("/dashboard/:month/:year", authenticate, async (req, res) => {
+router.get("/dashboard", authenticate, async (req, res) => {
 	try {
 		const dashboard = await DashbordDetails.findOne({
 			user: req.user._id,
-			month: req.params.month,
-			year: req.params.year,
+			month: req.query.month,
+			year: req.query.year,
 		});
 		res.status(200).send(dashboard);
 	} catch (error) {

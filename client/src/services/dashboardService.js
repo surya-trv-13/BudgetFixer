@@ -14,6 +14,7 @@ export const setDashboardData = async (token, payload) => {
 
 export const getDashboardData = async (token, payload) => {
 	config.headers.Authorization = `Bearer ${token}`;
-	const dashboardData = await axios.get(`/dashboard/${payload?.month}/${payload?.year}`, config);
+	config.params = payload;
+	const dashboardData = await axios.get("/dashboard", config);
 	return dashboardData;
 };

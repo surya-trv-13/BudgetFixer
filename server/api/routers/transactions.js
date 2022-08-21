@@ -35,12 +35,12 @@ router.get("/transaction", authenticate, async (req, res) => {
 			$and: [
 				{
 					$expr: {
-						$eq: [{ $month: "$transactionDate" }, req.body.month],
+						$eq: [{ $month: "$transactionDate" }, req.query.month],
 					},
 				},
 				{
 					$expr: {
-						$eq: [{ $year: "$transactionDate" }, req.body.year],
+						$eq: [{ $year: "$transactionDate" }, req.query.year],
 					},
 				},
 			],
