@@ -10,6 +10,7 @@ const styles = (theme) => ({
 		width: "100%",
 		height: "100%",
 		background: theme.palette.solidBackground.main,
+		borderRadius: theme.typography.pxToRem(6),
 	},
 	header: {
 		height: "10%",

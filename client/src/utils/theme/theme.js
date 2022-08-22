@@ -189,5 +189,15 @@ export default createTheme({
 				color: "#FFFFFFA5",
 			},
 		},
+		PrivateSwitchBase: {
+			root: {
+				padding: pxToRem(9),
+			},
+		},
+		MuiIconButton: {
+			sizeSmall: {
+				padding: pxToRem(3),
+			},
+		},
 	},
 });

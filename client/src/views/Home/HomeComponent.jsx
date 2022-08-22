@@ -5,6 +5,7 @@ import { Grid } from "@material-ui/core";
 import LayoutWrapper from "../../components/Wrappers/LayoutWrapper";
 import homeComponentGetter from "../../utils/component-getters/homeComponentGetter";
 import { useDashboardSelectors } from "../../selectors/dashboardSelectors";
+import { useTransactionSelectors } from "../../selectors/transactionSelectors";
 
 const styles = (theme) => ({
 	box: {
@@ -26,14 +27,16 @@ const propTypes = {
 
 const HomeComponent = ({ classes, layoutConfig }) => {
 	const { getDashboardDetailsStart } = useDashboardSelectors();
+	const { transactionDetailsStart } = useTransactionSelectors();
 	useEffect(() => {
+		// Dashboard Data
 		const date = new Date();
 		const condnObj = {
 			month: date.getMonth() + 1,
 			year: date.getFullYear(),
 		};
-		console.log("Hi", condnObj);
 		getDashboardDetailsStart(localStorage.getItem("authToken"), condnObj);
+		transactionDetailsStart(condnObj, localStorage.getItem("authToken"));
 	}, []);
 	return (
 		<Grid container className={classes.box}>

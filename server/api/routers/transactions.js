@@ -31,16 +31,17 @@ router.get("/transaction/:id", authenticate, async (req, res) => {
 
 router.get("/transaction", authenticate, async (req, res) => {
 	try {
+		console.log("SURYA", req.user._id, req.query.year);
 		const transaction = await Transaction.find({
 			$and: [
 				{
 					$expr: {
-						$eq: [{ $month: "$transactionDate" }, req.query.month],
+						$eq: [{ $month: "$transactionDate" }, parseInt(req.query.month, 10)],
 					},
 				},
 				{
 					$expr: {
-						$eq: [{ $year: "$transactionDate" }, req.query.year],
+						$eq: [{ $year: "$transactionDate" }, parseInt(req.query.year, 10)],
 					},
 				},
 			],
