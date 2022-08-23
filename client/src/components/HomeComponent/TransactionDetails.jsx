@@ -37,9 +37,9 @@ const styles = (theme) => ({
 			padding: `0 ${theme.typography.pxToRem(10)}`,
 		},
 		"& .MuiDataGrid-columnHeader--sortable": {
-			width: `${theme.typography.pxToRem(250)} !important`,
-			maxWidth: `${theme.typography.pxToRem(250)} !important`,
-			minWidth: `${theme.typography.pxToRem(250)} !important`,
+			width: `${theme.typography.pxToRem(350)} !important`,
+			maxWidth: `${theme.typography.pxToRem(350)} !important`,
+			minWidth: `${theme.typography.pxToRem(350)} !important`,
 		},
 		"& .MuiDataGrid-columnSeparator": {
 			right: `-${theme.typography.pxToRem(12)}`,
@@ -49,7 +49,39 @@ const styles = (theme) => ({
 			fontSize: theme.typography.pxToRem(20),
 			marginRight: `-${theme.typography.pxToRem(6)}`,
 		},
+		"& .MuiDataGrid-window": {
+			top: `${theme.typography.pxToRem(56)} !important`,
+			width: "100%",
+			height: "90%",
+		},
+		"& .MuiDataGrid-row": {
+			maxHeight: `${theme.typography.pxToRem(52)} !important`,
+			minHeight: `${theme.typography.pxToRem(52)} !important`,
+		},
+		"& .MuiDataGrid-dataContainer": {
+			minWidth: `${theme.typography.pxToRem(2250)} !important`,
+		},
+		"& .MuiDataGrid-viewport": {
+			minWidth: `${theme.typography.pxToRem(1800)} !important`,
+			maxWidth: `${theme.typography.pxToRem(1800)} !important`,
+			maxHeight: "100% !important",
+		},
+		"& .MuiDataGrid-cell--textCenter.MuiDataGrid-cell--withRenderer": {
+			minHeight: `${theme.typography.pxToRem(50)} !important`,
+			maxHeight: `${theme.typography.pxToRem(50)} !important`,
+			lineHeight: `${theme.typography.pxToRem(51)} !important`,
+			minWidth: `${theme.typography.pxToRem(56)} !important`,
+			maxWidth: `${theme.typography.pxToRem(56)} !important`,
+		},
+		"& .MuiDataGrid-cell--textLeft": {
+			minHeight: `${theme.typography.pxToRem(50)} !important`,
+			maxHeight: `${theme.typography.pxToRem(50)} !important`,
+			lineHeight: `${theme.typography.pxToRem(51)} !important`,
+			minWidth: `${theme.typography.pxToRem(350)} !important`,
+			maxWidth: `${theme.typography.pxToRem(350)} !important`,
+		},
 	},
+	windowContainer: {},
 });
 
 const propTypes = {
