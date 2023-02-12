@@ -9,6 +9,7 @@ import getDashboardReducer from "./dashboardReducers/getDashboardReducer";
 import setDashboardReducer from "./dashboardReducers/setDashboardReducer";
 import getTransactionReducer from "./transactionReducers/getTransactionReducer";
 import setTransactionReducer from "./transactionReducers/setTransactionReducer";
+import transactionReducer from "./uiReducers/transactionReducer";
 
 const rootReducer = combineReducers({
 	loginApiReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
 	setDashboardReducer,
 	getTransactionReducer,
 	setTransactionReducer,
+	transactionReducer,
 });
 
 export default rootReducer;
