@@ -3,9 +3,10 @@ import {
 	SET_TRANSACTION_ROW_SELECTION,
 	SET_TRANSACTION_PAGE,
 	SET_TRANSACTION_ROWS_PER_PAGE,
+	SET_TRANSACTION_TABLE_SELECT_ALL,
 } from "../actionTypes";
 
-export const setTrasactionColumnOrder = (order, orderBy) => ({
+export const setTransactionColumnOrder = (order, orderBy) => ({
 	type: SET_TRANSACTION_COLUMN_ORDER,
 	order,
 	orderBy,
@@ -24,4 +25,9 @@ export const setTransactionGridPage = (page) => ({
 export const setTransactionGridRowsPerPage = (rowCount) => ({
 	type: SET_TRANSACTION_ROWS_PER_PAGE,
 	rowCount,
+});
+
+export const setTransactionSelectAll = (payload) => ({
+	type: SET_TRANSACTION_TABLE_SELECT_ALL,
+	payload,
 });

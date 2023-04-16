@@ -4,8 +4,16 @@ import { Checkbox, TableCell, TableHead, TableRow } from "@material-ui/core";
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
+	numSelected: PropTypes.number,
+	rowCount: PropTypes.number,
 };
-const TransactionGridHeaders = ({ classes }) => {
+
+const defaultProps = {
+	numSelected: 0,
+	rowCount: 0,
+};
+
+const TransactionGridHeaders = ({ classes, numSelected, rowCount }) => {
 	const headerCells = [
 		{
 			id: "item",
@@ -51,7 +59,7 @@ const TransactionGridHeaders = ({ classes }) => {
 				<TableCell padding="checkbox">
 					<Checkbox
 						indeterminate={numSelected > 0 && numSelected < rowCount}
-						checked={rowCount > 0 && numSelected === rowCount}
+						checked={numSelected === rowCount}
 						onChange={onSelectAllClick}
 						inputProps={{ "aria-label": "select all transaction" }}
 					/>
@@ -62,5 +70,6 @@ const TransactionGridHeaders = ({ classes }) => {
 };
 
 TransactionGridHeaders.propTypes = propTypes;
+TransactionGridHeaders.defaultProps = defaultProps;
 
 export default TransactionGridHeaders;
