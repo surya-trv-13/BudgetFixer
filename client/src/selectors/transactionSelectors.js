@@ -23,9 +23,14 @@ export const useTransactionSelectors = () => {
 		[dispatch]
 	);
 
+	const transactionDetailsEntryStart = useCallback(
+		(payload, token) => dispatch(setTransactionData(payload, token)),
+		[dispatch]
+	);
 	return {
 		transactionDetails,
 		transactionDetailsLoading,
 		transactionDetailsStart,
+		transactionDetailsEntryStart,
 	};
 };

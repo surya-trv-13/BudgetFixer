@@ -23,9 +23,7 @@ const TransactionDetails = ({ classes }) => {
 	return (
 		<Box className={classes.root}>
 			<Table>
-				<TableHead>
-					
-				</TableHead>
+				<TableHead></TableHead>
 			</Table>
 		</Box>
 	);

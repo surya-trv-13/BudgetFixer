@@ -42,7 +42,7 @@ const propTypes = {
 
 const MenuComponent = ({ classes }) => {
 	const { headerMenuAnchorEl, isHeaderMenuOpen, setMenuOpen } = useUiSelectors();
-	const { userLogOutStart, isLogoutLoading, isLogout, setTokenRegister } = useAuthSelectors();
+	const { userLogOutStart, isLogoutLoading, isLogout, removeAuthTokenVal } = useAuthSelectors();
 	const navigate = useNavigate();
 	const preValue = usePrevious({ isLogout, isLogoutLoading });
 
@@ -51,7 +51,6 @@ const MenuComponent = ({ classes }) => {
 	// 	console.log(isLogoutLoading, isLogout);
 	// 	if (isLogoutLoading === isLogout) {
 	// 		localStorage.removeItem("authToken");
-	// 		setTokenRegister(false);
 	// 		navigate("/Login");
 	// 	}
 	// }, [JSON.stringify(isLogoutLoading)]);
@@ -63,9 +62,11 @@ const MenuComponent = ({ classes }) => {
 		});
 	};
 
-	const handleLogout = () => {
+	const handleLogout = async () => {
 		handleClose();
-		userLogOutStart(localStorage.getItem("authToken"));
+		await userLogOutStart(localStorage.getItem("authToken"));
+		await removeAuthTokenVal();
+		await localStorage.removeItem("authToken");
 	};
 	return (
 		<Menu

@@ -61,8 +61,7 @@ const propTypes = {
 };
 
 const SignUpForm = ({ classes }) => {
-	const { userRegisterStart, registerData, isRegisterLoading, setTokenRegister } =
-		useAuthSelectors();
+	const { userRegisterStart, registerData, isRegisterLoading } = useAuthSelectors();
 	const navigate = useNavigate();
 	const [credentials, setCredentials] = useState({
 		name: "",
@@ -83,7 +82,6 @@ const SignUpForm = ({ classes }) => {
 	useEffect(() => {
 		if (!isRegisterLoading && registerData?.token) {
 			localStorage.setItem("authToken", registerData.token);
-			setTokenRegister(true);
 			navigate("/");
 		}
 	}, [isRegisterLoading]);

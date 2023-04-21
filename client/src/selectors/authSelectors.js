@@ -2,8 +2,7 @@
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { useCallback } from "react";
 
-import { setLoginApiStart } from "../actions/authAction/loginApiAction";
-import { isTokenRegisteredAction } from "../actions/authAction/tokenRegisterAction";
+import { setLoginApiStart, removeAuthToken } from "../actions/authAction/loginApiAction";
 import { setRegisterCallStart } from "../actions/authAction/registerApiAction";
 import { setInitialLogout, setLogoutApiStart } from "../actions/authAction/logoutApiAction";
 import { getUserDetailsAPIStart } from "../actions/authAction/userDetailsApiAction";
@@ -12,10 +11,6 @@ export const useAuthSelectors = () => {
 	const isLoginLoading = useSelector((state) => state.loginApiReducer.loading, shallowEqual);
 	const loginData = useSelector((state) => state.loginApiReducer.data, shallowEqual);
 	const loginErrorData = useSelector((state) => state.loginApiReducer.error, shallowEqual);
-	const isTokenRegistered = useSelector(
-		(state) => state.tokenRegisterReducer.isTokenRegistered,
-		shallowEqual
-	);
 	const isRegisterLoading = useSelector(
 		(state) => state.registerApiReducer.loading,
 		shallowEqual
@@ -32,16 +27,12 @@ export const useAuthSelectors = () => {
 
 	const dispatch = useDispatch();
 	const userLoginStart = useCallback((data) => dispatch(setLoginApiStart(data)), [dispatch]);
-	const setTokenRegister = useCallback(
-		(data) => dispatch(isTokenRegisteredAction(data)),
-		[dispatch]
-	);
 	const userRegisterStart = useCallback(
 		(data) => dispatch(setRegisterCallStart(data)),
 		[dispatch]
 	);
 	const userLogOutStart = useCallback((token) => dispatch(setLogoutApiStart(token)), [dispatch]);
-	const userLogoutInitalState = useCallback(
+	const userLogoutInitialState = useCallback(
 		(data) => dispatch(setInitialLogout(data)),
 		[dispatch]
 	);
@@ -49,12 +40,12 @@ export const useAuthSelectors = () => {
 		(token) => dispatch(getUserDetailsAPIStart(token)),
 		[dispatch]
 	);
+	const removeAuthTokenVal = useCallback(() => dispatch(removeAuthToken()), [dispatch]);
 
 	return {
 		isLoginLoading,
 		loginData,
 		loginErrorData,
-		isTokenRegistered,
 		isRegisterLoading,
 		registerData,
 		registerError,
@@ -63,10 +54,10 @@ export const useAuthSelectors = () => {
 		isUserDataLoading,
 		userData,
 		userLoginStart,
-		setTokenRegister,
 		userRegisterStart,
 		userLogOutStart,
-		userLogoutInitalState,
+		userLogoutInitialState,
+		removeAuthTokenVal,
 		getUserDetailsStart,
 	};
 };

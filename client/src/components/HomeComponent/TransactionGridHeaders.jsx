@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Checkbox, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { useUiSelectors } from "../../selectors/uiSelectors";
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
 	numSelected: PropTypes.number,
 	rowCount: PropTypes.number,
+	transactionDetails: PropTypes.object.isRequired,
 };
 
 const defaultProps = {
@@ -13,7 +15,8 @@ const defaultProps = {
 	rowCount: 0,
 };
 
-const TransactionGridHeaders = ({ classes, numSelected, rowCount }) => {
+const TransactionGridHeaders = ({ classes, numSelected, rowCount, transactionDetails }) => {
+	const { setGridSelections } = useUiSelectors();
 	const headerCells = [
 		{
 			id: "item",
@@ -53,6 +56,16 @@ const TransactionGridHeaders = ({ classes, numSelected, rowCount }) => {
 		},
 	];
 
+	const onSelectAllClick = (event) => {
+		if (event.target.checked) {
+			const newSelected = transactionDetails.map((transaction) => transaction._id);
+			setGridSelections(newSelected);
+			return;
+		}
+
+		setGridSelections([]);
+	};
+
 	return (
 		<TableHead>
 			<TableRow>
@@ -64,6 +77,9 @@ const TransactionGridHeaders = ({ classes, numSelected, rowCount }) => {
 						inputProps={{ "aria-label": "select all transaction" }}
 					/>
 				</TableCell>
+				{headerCells.map((headers) => (
+					<TableCell></TableCell>
+				))}
 			</TableRow>
 		</TableHead>
 	);

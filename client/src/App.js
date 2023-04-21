@@ -6,10 +6,10 @@ import SignUp from "./views/SignUp/index";
 import { useAuthSelectors } from "./selectors/authSelectors";
 
 const App = () => {
-	const { isTokenRegistered, userLogoutInitalState } = useAuthSelectors();
+	const { userLogoutInitialState } = useAuthSelectors();
 
 	useEffect(() => {
-		userLogoutInitalState(!localStorage.getItem("authToken"));
+		userLogoutInitialState(!localStorage.getItem("authToken"));
 	}, []);
 
 	return (
