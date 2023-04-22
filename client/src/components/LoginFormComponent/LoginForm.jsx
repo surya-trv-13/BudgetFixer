@@ -61,7 +61,7 @@ const propTypes = {
 };
 
 const LoginForm = ({ classes }) => {
-	const { userLoginStart, loginData, isLoginLoading, userLogoutInitialState } =
+	const { userLoginStart, loginData, loginErrorData, isLoginLoading, userLogoutInitialState } =
 		useAuthSelectors();
 	const navigate = useNavigate();
 
@@ -85,6 +85,9 @@ const LoginForm = ({ classes }) => {
 			localStorage.setItem("authToken", loginData.token);
 			userLogoutInitialState(false);
 			navigate("/");
+		}
+		if (!isLoginLoading && loginErrorData) {
+			console.log("Error");
 		}
 	}, [isLoginLoading]);
 
