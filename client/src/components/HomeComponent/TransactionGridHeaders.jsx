@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Checkbox, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from "@material-ui/core";
 import { useUiSelectors } from "../../selectors/uiSelectors";
+import { TRANSACTION_HEADER_CELLS } from "../../utils/constants/constant";
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
@@ -17,44 +18,6 @@ const defaultProps = {
 
 const TransactionGridHeaders = ({ classes, numSelected, rowCount, transactionDetails }) => {
 	const { setGridSelections } = useUiSelectors();
-	const headerCells = [
-		{
-			id: "item",
-			numeric: false,
-			disablePadding: true,
-			label: "Item",
-		},
-		{
-			id: "paymentType",
-			numeric: false,
-			disablePadding: true,
-			label: "Payment Type",
-		},
-		{
-			id: "amount",
-			numeric: true,
-			disablePadding: true,
-			label: "Amount",
-		},
-		{
-			id: "paymentMode",
-			numeric: false,
-			disablePadding: true,
-			label: "Payment Mode",
-		},
-		{
-			id: "transactionDate",
-			numeric: false,
-			disablePadding: true,
-			label: "Transaction Date",
-		},
-		{
-			id: "description",
-			numeric: false,
-			disablePadding: true,
-			label: "Descriptions",
-		},
-	];
 
 	const onSelectAllClick = (event) => {
 		if (event.target.checked) {
@@ -77,8 +40,21 @@ const TransactionGridHeaders = ({ classes, numSelected, rowCount, transactionDet
 						inputProps={{ "aria-label": "select all transaction" }}
 					/>
 				</TableCell>
-				{headerCells.map((headers) => (
-					<TableCell></TableCell>
+				{TRANSACTION_HEADER_CELLS.map((header) => (
+					<TableCell
+						key={header.id}
+						align={header.numeric ? "right" : "left"}
+						padding={header.disablePadding ? "none" : "normal"}
+						// sortDirection={orderBy === header.id ? order : false}
+					>
+						<TableSortLabel
+						// active={orderBy === header.id}
+						// direction={orderBy === header.id ? order : "asc"}
+						// onClick={createSortHandler(header.id)}
+						>
+							{header.label}
+						</TableSortLabel>
+					</TableCell>
 				))}
 			</TableRow>
 		</TableHead>

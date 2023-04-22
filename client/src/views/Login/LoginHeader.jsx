@@ -16,7 +16,7 @@ const propTypes = {
 
 const LoginHeader = ({ classes }) => (
 	<Box className={classes.root}>
-		<Header title="Budget Fixer" showTag showLogo tagText="SignIn" />
+		<Header title="Budget Fixer" showTag showLogo tagText="Sign In" />
 	</Box>
 );
 

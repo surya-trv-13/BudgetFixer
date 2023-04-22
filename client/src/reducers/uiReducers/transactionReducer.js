@@ -33,7 +33,7 @@ const transactionReducer = (state = initialState, action = {}) => {
 		case SET_TRANSACTION_ROW_SELECTION:
 			return {
 				...state,
-				rows: state.rows,
+				selectedRows: action.rows,
 			};
 		default:
 			return state;
