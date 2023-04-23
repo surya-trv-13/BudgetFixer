@@ -70,19 +70,17 @@ const TransactionDetails = ({ classes }) => {
 										selected={isTransactionSelected}
 										key={transaction?._id}
 									>
-										<TableCell>
+										<TableCell padding="checkbox">
 											<Checkbox checked={isTransactionSelected} />
 										</TableCell>
-										<TableCell
-											align="right"
-											component="th"
-											id={transaction._id}
-										>
+										<TableCell component="th" id={transaction._id}>
 											{transaction.item}
 										</TableCell>
-										<TableCell align="right">
-											{transaction?.paymentType}
-										</TableCell>
+										<TableCell>{transaction?.paymentType}</TableCell>
+										<TableCell>{transaction?.amount}</TableCell>
+										<TableCell>{transaction?.paymentMode}</TableCell>
+										<TableCell>{transaction?.transactionDate}</TableCell>
+										<TableCell>{transaction?.description}</TableCell>
 									</TableRow>
 								);
 							})}

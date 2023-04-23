@@ -43,7 +43,7 @@ const TransactionGridHeaders = ({ classes, numSelected, rowCount, transactionDet
 				{TRANSACTION_HEADER_CELLS.map((header) => (
 					<TableCell
 						key={header.id}
-						align={header.numeric ? "right" : "left"}
+						// align={header.numeric ? "right" : "left"}
 						padding={header.disablePadding ? "none" : "normal"}
 						// sortDirection={orderBy === header.id ? order : false}
 					>

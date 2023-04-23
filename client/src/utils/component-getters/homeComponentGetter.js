@@ -3,7 +3,7 @@ import InvalidComponentIdException from "../../Exceptions/InvalidComponentIdExce
 import { HOME_DASHBOARD_COMPONENT } from "../componentIDs";
 import SummaryDetails from "../../components/HomeComponent/SummaryDetails";
 import GridDetails from "../../components/HomeComponent/GridDetails";
-import TransactionDetails from "../../components/HomeComponent/TransactionDetails";
+import TransactionDetailsSheet from "../../components/HomeComponent/TransactionDetailsSheet";
 
 const getMonthlySalary = () => (
 	<SummaryDetails dotValue="monthlySalary" boxHeader="Monthly Salary" />
@@ -20,7 +20,7 @@ const getRemainingBalance = () => (
 );
 
 const getRightSection = () => <GridDetails />;
-const getTransactionComponent = () => <TransactionDetails />;
+const getTransactionComponent = () => <TransactionDetailsSheet />;
 
 const getComponent = (componentId = "") => {
 	switch (componentId) {

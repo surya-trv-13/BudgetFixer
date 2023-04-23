@@ -199,5 +199,16 @@ export default createTheme({
 				padding: pxToRem(3),
 			},
 		},
+		MuiTableCell: {
+			root: {
+				padding: pxToRem(16),
+				borderBottom: `${pxToRem(1)} solid #FFFFFFA5`,
+			},
+		},
+		MuiTableSortLabel: {
+			icon: {
+				fontSize: pxToRem(28),
+			},
+		},
 	},
 });
