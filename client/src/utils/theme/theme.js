@@ -204,10 +204,22 @@ export default createTheme({
 				padding: pxToRem(16),
 				borderBottom: `${pxToRem(1)} solid #FFFFFFA5`,
 			},
+			paddingNone: {
+				padding: pxToRem(16),
+				"&:last-child": {
+					padding: `${pxToRem(16)} 0 ${pxToRem(16)} ${pxToRem(16)}`,
+				},
+			},
+			paddingCheckbox: {
+				width: pxToRem(48),
+				padding: `0 0 0 ${pxToRem(4)}`,
+			},
 		},
 		MuiTableSortLabel: {
 			icon: {
 				fontSize: pxToRem(28),
+				marginLeft: pxToRem(4),
+				marginRight: pxToRem(4),
 			},
 		},
 	},

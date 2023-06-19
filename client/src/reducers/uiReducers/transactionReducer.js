@@ -9,7 +9,7 @@ const initialState = {
 	order: "asc",
 	orderBy: "item",
 	selectedRows: [],
-	page: 1,
+	page: 0,
 	rowCount: 10,
 };
 

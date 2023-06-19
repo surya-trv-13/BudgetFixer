@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const getFormattedDate = () => {
 	const date = new Date();
 	const monthNames = [
@@ -24,4 +23,10 @@ export const getFormattedDate = () => {
 	const year = date.getFullYear();
 
 	return `${day}-${monthName}-${year}`;
+};
+
+export const formatDate = (dateValue) => {
+	const resultantDate = new Date(dateValue);
+	const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+	return resultantDate.toLocaleDateString("en-US", options);
 };

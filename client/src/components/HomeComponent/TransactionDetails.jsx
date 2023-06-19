@@ -5,13 +5,20 @@ import { Box, Table, TableBody, TableCell, TableRow, Checkbox } from "@material-
 import { useTransactionSelectors } from "../../selectors/transactionSelectors";
 import TransactionGridHeaders from "./TransactionGridHeaders";
 import { useUiSelectors } from "../../selectors/uiSelectors";
+import { formatDate } from "../../utils/dateUtils";
+import { pxToRem } from "../../utils/theme/theme";
 
 const styles = (theme) => ({
 	root: {
-		width: "100%",
-		height: "100%",
-		background: theme.palette.solidBackground.main,
+		width: "auto",
+		height: "80%",
+		background: theme.palette.solidBackground.default,
 		borderRadius: theme.typography.pxToRem(6),
+		overflowX: "auto",
+		margin: pxToRem(48),
+	},
+	tableRoot: {
+		width: "max-content",
 	},
 });
 
@@ -21,10 +28,7 @@ const propTypes = {
 
 const TransactionDetails = ({ classes }) => {
 	const { transactionDetails, transactionDetailsLoading } = useTransactionSelectors();
-	const { setGridSelections, gridSelectedRows } = useUiSelectors();
-	const [page, setPage] = useState(0);
-	const [rowPerPage, setRowPerPage] = useState(10);
-
+	const { gridSelectedRows, gridRowCount, currentGridPage, setGridSelections } = useUiSelectors();
 	const isSelected = (transactionId) => gridSelectedRows.indexOf(transactionId) !== -1;
 	const handleRowClick = (e, transactionId) => {
 		const selectedIndex = gridSelectedRows.indexOf(transactionId);
@@ -48,7 +52,7 @@ const TransactionDetails = ({ classes }) => {
 
 	return (
 		<Box className={classes.root}>
-			<Table>
+			<Table className={classes.tableRoot}>
 				<TransactionGridHeaders
 					rowCount={transactionDetails.length}
 					transactionDetails={transactionDetails}
@@ -58,8 +62,11 @@ const TransactionDetails = ({ classes }) => {
 					{!transactionDetailsLoading &&
 						transactionDetails &&
 						transactionDetails
-							.slice(page * rowPerPage, page * rowPerPage + rowPerPage)
-							.map((transaction, index) => {
+							.slice(
+								currentGridPage * gridRowCount,
+								currentGridPage * gridRowCount + gridRowCount
+							)
+							.map((transaction) => {
 								const isTransactionSelected = isSelected(transaction._id);
 								return (
 									<TableRow
@@ -79,7 +86,9 @@ const TransactionDetails = ({ classes }) => {
 										<TableCell>{transaction?.paymentType}</TableCell>
 										<TableCell>{transaction?.amount}</TableCell>
 										<TableCell>{transaction?.paymentMode}</TableCell>
-										<TableCell>{transaction?.transactionDate}</TableCell>
+										<TableCell>
+											{formatDate(transaction?.transactionDate)}
+										</TableCell>
 										<TableCell>{transaction?.description}</TableCell>
 									</TableRow>
 								);

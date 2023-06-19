@@ -1,8 +1,19 @@
 import React from "react";
+import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import { Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from "@material-ui/core";
 import { useUiSelectors } from "../../selectors/uiSelectors";
 import { TRANSACTION_HEADER_CELLS } from "../../utils/constants/constant";
+
+const styles = (theme) => ({
+	tableCell: {
+		color: theme.palette.grey[50],
+	},
+	checkbox: {
+		color: theme.palette.grey[50],
+		fontSize: "1vw",
+	},
+});
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
@@ -31,9 +42,10 @@ const TransactionGridHeaders = ({ classes, numSelected, rowCount, transactionDet
 
 	return (
 		<TableHead>
-			<TableRow>
-				<TableCell padding="checkbox">
+			<TableRow className={classes.tableRow}>
+				<TableCell padding="checkbox" className={classes.tableCell}>
 					<Checkbox
+						className={classes.checkbox}
 						indeterminate={numSelected > 0 && numSelected < rowCount}
 						checked={numSelected === rowCount}
 						onChange={onSelectAllClick}
@@ -42,18 +54,11 @@ const TransactionGridHeaders = ({ classes, numSelected, rowCount, transactionDet
 				</TableCell>
 				{TRANSACTION_HEADER_CELLS.map((header) => (
 					<TableCell
+						className={classes.tableCell}
 						key={header.id}
-						// align={header.numeric ? "right" : "left"}
 						padding={header.disablePadding ? "none" : "normal"}
-						// sortDirection={orderBy === header.id ? order : false}
 					>
-						<TableSortLabel
-						// active={orderBy === header.id}
-						// direction={orderBy === header.id ? order : "asc"}
-						// onClick={createSortHandler(header.id)}
-						>
-							{header.label}
-						</TableSortLabel>
+						<TableSortLabel>{header.label}</TableSortLabel>
 					</TableCell>
 				))}
 			</TableRow>
@@ -64,4 +69,4 @@ const TransactionGridHeaders = ({ classes, numSelected, rowCount, transactionDet
 TransactionGridHeaders.propTypes = propTypes;
 TransactionGridHeaders.defaultProps = defaultProps;
 
-export default TransactionGridHeaders;
+export default withStyles(styles, { withTheme: true })(TransactionGridHeaders);

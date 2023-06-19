@@ -3,6 +3,8 @@ import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import { Box } from "@material-ui/core";
 import TransactionDetails from "./TransactionDetails";
+import TransactionPagination from "./TransactionPagination";
+import { useTransactionSelectors } from "../../selectors/transactionSelectors";
 
 const styles = (theme) => ({
 	root: {
@@ -17,11 +19,19 @@ const propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-const TransactionDetailsSheet = ({ classes }) => (
-	<Box className={classes.root}>
-		<TransactionDetails />
-	</Box>
-);
+const TransactionDetailsSheet = ({ classes }) => {
+	const { transactionDetailsLoading, transactionDetails } = useTransactionSelectors();
+	return (
+		<Box className={classes.root}>
+			<TransactionDetails />
+			<TransactionPagination
+				dataLength={
+					!transactionDetailsLoading && transactionDetails && transactionDetails.length
+				}
+			/>
+		</Box>
+	);
+};
 
 TransactionDetailsSheet.propTypes = propTypes;
 
