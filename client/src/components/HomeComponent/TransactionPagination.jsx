@@ -26,7 +26,7 @@ const TransactionPagination = ({ classes, dataLength }) => {
 
 	return (
 		<TablePagination
-			rowsPerPageOptions={[5, 10, 20]}
+			rowsPerPageOptions={[2, 5, 10, 20]}
 			component="div"
 			count={dataLength}
 			rowsPerPage={gridRowCount}

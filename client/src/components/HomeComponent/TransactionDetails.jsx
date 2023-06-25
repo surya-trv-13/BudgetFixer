@@ -15,7 +15,7 @@ const styles = (theme) => ({
 		background: theme.palette.solidBackground.default,
 		borderRadius: theme.typography.pxToRem(6),
 		overflowX: "auto",
-		margin: pxToRem(48),
+		margin: `0 ${pxToRem(48)}`,
 	},
 	tableRoot: {
 		width: "max-content",

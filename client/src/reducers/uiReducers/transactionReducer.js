@@ -28,6 +28,7 @@ const transactionReducer = (state = initialState, action = {}) => {
 			};
 		case SET_TRANSACTION_ROWS_PER_PAGE:
 			return {
+				...state,
 				rowCount: action.rowCount,
 			};
 		case SET_TRANSACTION_ROW_SELECTION:

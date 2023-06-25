@@ -130,6 +130,15 @@ export default createTheme({
 			rounded: {
 				borderRadius: pxToRem(4),
 			},
+			elevation8: {
+				boxShadow: `0px ${pxToRem(5)} ${pxToRem(5)} -${pxToRem(
+					3
+				)} rgba(0,0,0,0.2), 0px ${pxToRem(8)} ${pxToRem(10)} ${pxToRem(
+					1
+				)} rgba(0,0,0,0.14), 0px ${pxToRem(3)} ${pxToRem(14)} ${pxToRem(
+					2
+				)} rgba(0,0,0,0.12)`,
+			},
 		},
 		MuiFormControl: {
 			fullWidth: {
@@ -188,6 +197,9 @@ export default createTheme({
 			root: {
 				color: "#FFFFFFA5",
 			},
+			input: {
+				padding: `${pxToRem(6)} 0 ${pxToRem(7)}`,
+			},
 		},
 		PrivateSwitchBase: {
 			root: {
@@ -197,6 +209,9 @@ export default createTheme({
 		MuiIconButton: {
 			sizeSmall: {
 				padding: pxToRem(3),
+			},
+			root: {
+				padding: pxToRem(12),
 			},
 		},
 		MuiTableCell: {
@@ -220,6 +235,71 @@ export default createTheme({
 				fontSize: pxToRem(28),
 				marginLeft: pxToRem(4),
 				marginRight: pxToRem(4),
+			},
+		},
+		MuiTablePagination: {
+			toolbar: {
+				minHeight: pxToRem(52),
+				paddingRight: pxToRem(2),
+				paddingLeft: pxToRem(2),
+			},
+			selectRoot: {
+				marginRight: pxToRem(32),
+				marginLeft: pxToRem(8),
+			},
+			select: {
+				paddingRight: pxToRem(24),
+				paddingLeft: pxToRem(8),
+				paddingTop: pxToRem(10),
+			},
+			actions: {
+				marginLeft: pxToRem(20),
+			},
+			input: {
+				fontSize: pxToRem(20),
+			},
+		},
+		MuiSelect: {
+			icon: {
+				top: `calc(50% - ${pxToRem(12)})`,
+				color: "#FFFFFFA6",
+			},
+			root: {
+				paddingRight: `${pxToRem(24)} !important`,
+			},
+			select: {
+				minWidth: pxToRem(16),
+			},
+			nativeInput: {
+				padding: `${pxToRem(1)} ${pxToRem(2)}`,
+				borderWidth: `${pxToRem(2)}`,
+			},
+		},
+		MuiPopover: {
+			paper: {
+				maxWidth: `calc(100% - ${pxToRem(32)})`,
+				maxHeight: `calc(100% - ${pxToRem(96)}) !important`,
+				minWidth: `${pxToRem(5)} !important`,
+				minHeight: pxToRem(16),
+			},
+		},
+		MuiList: {
+			padding: {
+				paddingTop: pxToRem(8),
+				paddingBottom: pxToRem(8),
+				paddingInlineStart: pxToRem(0),
+			},
+		},
+		MuiMenuItem: {
+			root: {
+				paddingTop: pxToRem(6),
+				paddingBottom: pxToRem(6),
+				paddingRight: pxToRem(16),
+				paddingLeft: pxToRem(16),
+				minHeight: pxToRem(48),
+				"&:hover": {
+					background: "#282828",
+				},
 			},
 		},
 	},
