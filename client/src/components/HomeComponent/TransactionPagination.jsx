@@ -1,7 +1,16 @@
 import { TablePagination } from "@material-ui/core";
+import { withStyles } from "@material-ui/styles";
 import React from "react";
 import PropTypes from "prop-types";
 import { useUiSelectors } from "../../selectors/uiSelectors";
+
+const styles = (theme) => ({
+	tablePagination: {
+		color: "#FFFFFFA6",
+		backgroundColor: theme.palette.solidBackground,
+		margin: `0 ${theme.typography.pxToRem(48)}`,
+	},
+});
 
 const propTypes = {
 	classes: PropTypes.object.isRequired,
@@ -49,7 +58,7 @@ const TransactionPagination = ({ classes, dataLength }) => {
 			// }}
 			onPageChange={handleChangePage}
 			onRowsPerPageChange={handleChangeRowsPerPage}
-			style={{ color: "#FFFFFFA6", backgroundColor: "#252C48" }}
+			className={classes.tablePagination}
 		/>
 	);
 };
@@ -57,4 +66,4 @@ const TransactionPagination = ({ classes, dataLength }) => {
 TransactionPagination.propTypes = propTypes;
 TransactionPagination.defaultProps = defaultProps;
 
-export default TransactionPagination;
+export default withStyles(styles, { withTheme: true })(TransactionPagination);

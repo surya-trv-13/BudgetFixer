@@ -127,6 +127,9 @@ export default createTheme({
 			},
 		},
 		MuiPaper: {
+			root: {
+				backgroundColor: "#181818",
+			},
 			rounded: {
 				borderRadius: pxToRem(4),
 			},
@@ -299,6 +302,19 @@ export default createTheme({
 				minHeight: pxToRem(48),
 				"&:hover": {
 					background: "#282828",
+				},
+			},
+		},
+		MuiListItem: {
+			root: {
+				"&.Mui-selected": {
+					backgroundColor: "#282828",
+					"&:hover": {
+						backgroundColor: "#282828",
+					},
+				},
+				"&:hover": {
+					backgroundColor: "#282828A5",
 				},
 			},
 		},
