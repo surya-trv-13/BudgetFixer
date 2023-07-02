@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
-import { Box, Table, TableBody, TableCell, TableRow, Checkbox } from "@material-ui/core";
+import {
+	Box,
+	Table,
+	TableBody,
+	TableCell,
+	TableRow,
+	Checkbox,
+	Tooltip,
+	Typography,
+} from "@material-ui/core";
 import { useTransactionSelectors } from "../../selectors/transactionSelectors";
 import TransactionGridHeaders from "./TransactionGridHeaders";
 import { useUiSelectors } from "../../selectors/uiSelectors";
@@ -12,13 +21,31 @@ const styles = (theme) => ({
 	root: {
 		width: "auto",
 		height: "80%",
-		background: theme.palette.solidBackground.default,
+		backgroundColor: theme.palette.background.default,
 		borderRadius: theme.typography.pxToRem(6),
 		overflowX: "auto",
-		margin: `0 ${pxToRem(48)}`,
+		margin: `0 ${pxToRem(28)}`,
 	},
 	tableRoot: {
 		width: "max-content",
+	},
+	transactionRows: {
+		"&:hover": {
+			backgroundColor: `${theme.palette.solidBackground.main} !important`,
+		},
+	},
+	tableCellCheckBox: {
+		color: theme.palette.grey[200],
+		fontSize: "1vw",
+	},
+	selected: {
+		backgroundColor: `${theme.palette.grey[10]} !important`,
+		"&:hover": {
+			backgroundColor: `${theme.palette.grey[10]} !important`,
+		},
+	},
+	tableCell: {
+		color: theme.palette.grey[200],
 	},
 });
 
@@ -50,6 +77,18 @@ const TransactionDetails = ({ classes }) => {
 		setGridSelections(selectedRows);
 	};
 
+	const setEllipsis = (text) => {
+		if (text.length > 30) {
+			return (
+				<Tooltip title={text} arrow>
+					<Typography>{`${text.slice(0, 30)}...`}</Typography>
+				</Tooltip>
+			);
+		}
+
+		return text;
+	};
+
 	return (
 		<Box className={classes.root}>
 			<Table className={classes.tableRoot}>
@@ -76,20 +115,37 @@ const TransactionDetails = ({ classes }) => {
 										tabIndex={-1}
 										selected={isTransactionSelected}
 										key={transaction?._id}
+										className={classes.transactionRows}
+										classes={{ selected: classes.selected }}
 									>
-										<TableCell padding="checkbox">
-											<Checkbox checked={isTransactionSelected} />
+										<TableCell padding="checkbox" className={classes.tableCell}>
+											<Checkbox
+												checked={isTransactionSelected}
+												className={classes.tableCellCheckBox}
+											/>
 										</TableCell>
-										<TableCell component="th" id={transaction._id}>
+										<TableCell
+											component="th"
+											id={transaction._id}
+											className={classes.tableCell}
+										>
 											{transaction.item}
 										</TableCell>
-										<TableCell>{transaction?.paymentType}</TableCell>
-										<TableCell>{transaction?.amount}</TableCell>
-										<TableCell>{transaction?.paymentMode}</TableCell>
-										<TableCell>
+										<TableCell className={classes.tableCell}>
+											{transaction?.paymentType}
+										</TableCell>
+										<TableCell className={classes.tableCell}>
+											{transaction?.amount}
+										</TableCell>
+										<TableCell className={classes.tableCell}>
+											{transaction?.paymentMode}
+										</TableCell>
+										<TableCell className={classes.tableCell}>
 											{formatDate(transaction?.transactionDate)}
 										</TableCell>
-										<TableCell>{transaction?.description}</TableCell>
+										<TableCell className={classes.tableCell}>
+											{setEllipsis(transaction?.description)}
+										</TableCell>
 									</TableRow>
 								);
 							})}

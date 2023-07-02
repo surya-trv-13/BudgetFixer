@@ -8,7 +8,7 @@ const styles = (theme) => ({
 	tablePagination: {
 		color: "#FFFFFFA6",
 		backgroundColor: theme.palette.solidBackground,
-		margin: `0 ${theme.typography.pxToRem(48)}`,
+		margin: `0 ${theme.typography.pxToRem(28)}`,
 	},
 });
 
@@ -52,10 +52,6 @@ const TransactionPagination = ({ classes, dataLength }) => {
 					color: "#5DAAE0",
 				},
 			}}
-			// classes={{
-			// 	selectIcon: classes.selectIco,
-			// 	root: classes.selectList,
-			// }}
 			onPageChange={handleChangePage}
 			onRowsPerPageChange={handleChangeRowsPerPage}
 			className={classes.tablePagination}

@@ -34,6 +34,7 @@ export default createTheme({
 		},
 		divider: "rgb(255,255,255,0.5)",
 		grey: {
+			10: "rgb(255,255,255,0.2)",
 			50: "rgb(255,255,255,0.5)",
 			100: "rgb(255,255,255,0.65)",
 			200: "rgb(255,255,255,0.85)",
@@ -220,7 +221,7 @@ export default createTheme({
 		MuiTableCell: {
 			root: {
 				padding: pxToRem(16),
-				borderBottom: `${pxToRem(1)} solid #FFFFFFA5`,
+				borderBottom: `${pxToRem(1)} solid #71797E`,
 			},
 			paddingNone: {
 				padding: pxToRem(16),
