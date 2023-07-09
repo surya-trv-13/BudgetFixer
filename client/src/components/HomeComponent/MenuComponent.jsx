@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 import { Menu, MenuItem } from "@material-ui/core";
 import { useUiSelectors } from "../../selectors/uiSelectors";
 import { useAuthSelectors } from "../../selectors/authSelectors";
-import { usePrevious } from "../../hooks/previousHook";
 
 const styles = (theme) => ({
 	menuComponentRoot: {
@@ -42,18 +40,7 @@ const propTypes = {
 
 const MenuComponent = ({ classes }) => {
 	const { headerMenuAnchorEl, isHeaderMenuOpen, setMenuOpen } = useUiSelectors();
-	const { userLogOutStart, isLogoutLoading, isLogout, removeAuthTokenVal } = useAuthSelectors();
-	const navigate = useNavigate();
-	const preValue = usePrevious({ isLogout, isLogoutLoading });
-
-	// TODO: Forn now halting logout option
-	// useEffect(() => {
-	// 	console.log(isLogoutLoading, isLogout);
-	// 	if (isLogoutLoading === isLogout) {
-	// 		localStorage.removeItem("authToken");
-	// 		navigate("/Login");
-	// 	}
-	// }, [JSON.stringify(isLogoutLoading)]);
+	const { userLogOutStart, removeAuthTokenVal } = useAuthSelectors();
 
 	const handleClose = () => {
 		setMenuOpen({

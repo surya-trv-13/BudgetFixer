@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import {
@@ -47,6 +48,11 @@ const styles = (theme) => ({
 	tableCell: {
 		color: theme.palette.grey[200],
 	},
+	tableCellCredit: { color: "#00FF00" },
+	tableCellDebit: { color: "#FF0000" },
+	descriptionCell: {
+		width: theme.typography.pxToRem(328),
+	},
 });
 
 const propTypes = {
@@ -85,7 +91,6 @@ const TransactionDetails = ({ classes }) => {
 				</Tooltip>
 			);
 		}
-
 		return text;
 	};
 
@@ -134,7 +139,13 @@ const TransactionDetails = ({ classes }) => {
 										<TableCell className={classes.tableCell}>
 											{transaction?.paymentType}
 										</TableCell>
-										<TableCell className={classes.tableCell}>
+										<TableCell
+											className={
+												transaction?.paymentType === "Credit"
+													? classes.tableCellCredit
+													: classes.tableCellDebit
+											}
+										>
 											{transaction?.amount}
 										</TableCell>
 										<TableCell className={classes.tableCell}>
@@ -143,7 +154,12 @@ const TransactionDetails = ({ classes }) => {
 										<TableCell className={classes.tableCell}>
 											{formatDate(transaction?.transactionDate)}
 										</TableCell>
-										<TableCell className={classes.tableCell}>
+										<TableCell
+											className={clsx(
+												classes.tableCell,
+												classes.descriptionCell
+											)}
+										>
 											{setEllipsis(transaction?.description)}
 										</TableCell>
 									</TableRow>

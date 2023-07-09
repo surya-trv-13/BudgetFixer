@@ -5,6 +5,7 @@ import { Box } from "@material-ui/core";
 import TransactionDetails from "./TransactionDetails";
 import TransactionPagination from "./TransactionPagination";
 import { useTransactionSelectors } from "../../selectors/transactionSelectors";
+import TransactionDetailsHeader from "./TransactionDetailsHeader";
 
 const styles = (theme) => ({
 	root: {
@@ -23,6 +24,7 @@ const TransactionDetailsSheet = ({ classes }) => {
 	const { transactionDetailsLoading, transactionDetails } = useTransactionSelectors();
 	return (
 		<Box className={classes.root}>
+			<TransactionDetailsHeader />
 			<TransactionDetails />
 			<TransactionPagination
 				dataLength={
